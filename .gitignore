@@ -20,3 +20,4 @@ doc/
 
 #chef stuff
 Berksfile.lock
+.kitchen
