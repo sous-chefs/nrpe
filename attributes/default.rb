@@ -25,25 +25,30 @@
 # limitations under the License.
 #
 
+
+# platform specific values
 case node['platform_family']
 when 'debian'
-  default['nrpe']['install_method']  = 'package'
-  default['nrpe']['pid_file']           = '/var/run/nagios/nrpe.pid'
+  default['nrpe']['install_method']    = 'package'
+  default['nrpe']['pid_file']          = '/var/run/nagios/nrpe.pid'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['packages']          = %w{ nagios-nrpe-server nagios-plugins nagios-plugins-basic nagios-plugins-standard }
+  default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   if node['kernel']['machine'] == 'i686'
-    default['nrpe']['ssl_lib_dir']       = '/usr/lib/i386-linux-gnu'
+    default['nrpe']['ssl_lib_dir']     = '/usr/lib/i386-linux-gnu'
+    default['nrpe']['plugin_dir']      = '/usr/lib/nagios/plugins'
   else
-    default['nrpe']['ssl_lib_dir']       = '/usr/lib/x86_64-linux-gnu'
+    default['nrpe']['ssl_lib_dir']     = '/usr/lib/x86_64-linux-gnu'
+    default['nrpe']['plugin_dir']      = '/usr/lib64/nagios/plugins'
   end
   if node['nrpe']['install_method'] == 'package'
-    default['nrpe']['service_name']      = 'nagios-nrpe-server'
+    default['nrpe']['service_name']    = 'nagios-nrpe-server'
   else
-    default['nrpe']['service_name']      = 'nrpe'
+    default['nrpe']['service_name']    = 'nrpe'
   end
 when 'rhel', 'fedora'
-  default['nrpe']['install_method']  = 'source'
-  default['nrpe']['pid_file']           = '/var/run/nrpe.pid'
+  default['nrpe']['install_method']    = 'source'
+  default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
   default['nrpe']['packages']          = %w{ nrpe nagios-plugins-disk nagios-plugins-load nagios-plugins-procs nagios-plugins-users }
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['home']            = '/usr/lib/nagios'
@@ -54,12 +59,17 @@ when 'rhel', 'fedora'
   end
   default['nrpe']['service_name']      = 'nrpe'
 else
-  default['nrpe']['install_method']  = 'source'
-  default['nrpe']['pid_file']           = '/var/run/nrpe.pid'
+  default['nrpe']['install_method']    = 'source'
+  default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['ssl_lib_dir']       = '/usr/lib'
   default['nrpe']['service_name']      = 'nrpe'
+  default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
 end
+
+# nrpe daemon user/group
+default['nrpe']['user']  = 'nagios'
+default['nrpe']['group'] = 'nagios'
 
 # config file options
 default['nrpe']['log_facility']       = nil
@@ -83,3 +93,4 @@ default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f
 default['nrpe']['server_role'] = 'monitoring'
 default['nrpe']['allowed_hosts'] = nil
 default['nrpe']['using_solo_search'] = false
+default['nrpe']['multi_environment_monitoring'] = false
