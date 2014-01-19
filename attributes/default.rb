@@ -47,7 +47,7 @@ when 'debian'
     default['nrpe']['service_name']    = 'nrpe'
   end
 when 'rhel', 'fedora'
-  default['nrpe']['install_method']    = 'source'
+  default['nrpe']['install_method']    = 'package'
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
   default['nrpe']['packages']          = %w{ nrpe nagios-plugins-disk nagios-plugins-load nagios-plugins-procs nagios-plugins-users }
   if node['kernel']['machine'] == 'i686'
