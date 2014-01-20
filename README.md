@@ -9,8 +9,8 @@ Requirements
 Chef version 0.10.10+ and Ohai 0.6.12+ are required.
 
 ### Platform
-* Debian 6
-* Ubuntu 10.04, 12.04
+* Debian 6.X, 7.X
+* Ubuntu 10.04, 12.04, 13.04
 * Red Hat Enterprise Linux (CentOS/Amazon/Scientific/Oracle) 5.X, 6.X
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification.
