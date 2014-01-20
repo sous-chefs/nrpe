@@ -58,6 +58,12 @@ when 'rhel', 'fedora'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib64'
   end
   default['nrpe']['service_name']      = 'nrpe'
+when 'freebsd'
+  default['nrpe']['install_method']    = 'package'
+  default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
+  default['nrpe']['packages']          = %w{ nrpe2 }
+  default['nrpe']['log_facility']      = 'daemon'
+  default['nrpe']['service_name']      = 'nrpe'
 else
   default['nrpe']['install_method']    = 'source'
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
