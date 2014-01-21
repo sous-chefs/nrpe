@@ -34,6 +34,7 @@ when 'debian'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['packages']          = %w{ nagios-nrpe-server nagios-plugins nagios-plugins-basic nagios-plugins-standard }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
+  default['nrpe']['conf_dir']          = '/etc/nagios'
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib/i386-linux-gnu'
     default['nrpe']['plugin_dir']      = '/usr/lib/nagios/plugins'
@@ -58,12 +59,14 @@ when 'rhel', 'fedora'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib64'
   end
   default['nrpe']['service_name']      = 'nrpe'
+  default['nrpe']['conf_dir']          = '/etc/nagios'
 when 'freebsd'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
-  default['nrpe']['packages']          = %w{ nrpe2 }
+  default['nrpe']['packages']          = %w{ nrpe }
   default['nrpe']['log_facility']      = 'daemon'
-  default['nrpe']['service_name']      = 'nrpe'
+  default['nrpe']['service_name']      = 'nrpe2'
+  default['nrpe']['conf_dir']          = '/usr/local/etc'
 else
   default['nrpe']['install_method']    = 'source'
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
@@ -71,6 +74,7 @@ else
   default['nrpe']['ssl_lib_dir']       = '/usr/lib'
   default['nrpe']['service_name']      = 'nrpe'
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
+  default['nrpe']['conf_dir']          = '/etc/nagios'
 end
 
 # nrpe daemon user/group
@@ -80,7 +84,6 @@ default['nrpe']['group'] = 'nagios'
 # config file options
 default['nrpe']['log_facility']       = nil
 default['nrpe']['debug']              = 0
-default['nrpe']['conf_dir']           = '/etc/nagios'
 default['nrpe']['dont_blame_nrpe']    = 0
 default['nrpe']['command_timeout']    = 60
 default['nrpe']['connection_timeout'] = nil
