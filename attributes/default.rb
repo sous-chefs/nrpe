@@ -25,7 +25,6 @@
 # limitations under the License.
 #
 
-
 # platform specific values
 case node['platform_family']
 when 'debian'
