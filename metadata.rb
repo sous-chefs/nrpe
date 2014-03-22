@@ -7,10 +7,10 @@ long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           '1.0.0'
 
 recipe 'nrpe', 'Installs and configures a nrpe client'
-%w{ build-essential yum-epel }.each do |cb|
+%w(build-essential yum-epel).each do |cb|
   depends cb
 end
 
-%w{ debian ubuntu redhat centos fedora scientific amazon oracle freebsd }.each do |os|
+%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd).each do |os|
   supports os
 end
