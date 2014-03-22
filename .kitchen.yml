@@ -22,6 +22,8 @@ platforms:
     run_list:
     - recipe[apt::default]
   - name: freebsd-9.2
+    run_list:
+    - recipe[freebsd::portsnap]
   - name: centos-6.5
   - name: centos-5.10
 
