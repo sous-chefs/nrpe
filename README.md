@@ -1,5 +1,5 @@
-chef-nrpe
-=========
+nrpe cookbook
+=============
 [![Build Status](https://travis-ci.org/tas50/chef-nrpe.svg?branch=master)](https://travis-ci.org/tas50/chef-nrpe)
 
 Chef cookbook to install Nagios NRPE client (was previously part of the Nagios cookbook)

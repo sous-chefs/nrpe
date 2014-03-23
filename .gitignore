@@ -12,6 +12,16 @@ test/tmp
 test/version_tmp
 tmp
 Gemfile.lock
+_Store
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+*.tmp
+*.bk
+*.bkup
 
 # YARD artifacts
 .yardoc
@@ -21,3 +31,10 @@ doc/
 #chef stuff
 Berksfile.lock
 .kitchen
+.kitchen.local.yml
+vendor/
+
+#vagrant stuff
+.vagrant/
+.vagrant.d/
+
