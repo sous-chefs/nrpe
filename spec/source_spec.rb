@@ -30,4 +30,16 @@ describe 'source install' do
   it 'creates the nrpe group' do
     expect(chef_run).to create_group(chef_run.node['nrpe']['group'])
   end
+
+  it 'creates config dir' do
+    expect(chef_run).to create_directory(chef_run.node['nrpe']['conf_dir'])
+  end
+
+  it 'templates init script' do
+    expect(chef_run).to render_file("/etc/init.d/#{chef_run.node['nrpe']['service_name']}")
+  end
+
+  it 'starts service called nrpe not nagios-nrpe-server' do
+    expect(chef_run).to start_service('nrpe')
+  end
 end
