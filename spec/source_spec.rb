@@ -36,7 +36,7 @@ describe 'source install' do
   end
 
   it 'templates init script' do
-    expect(chef_run).to render_file("/etc/init.d/#{chef_run.node['nrpe']['service_name']}")
+    expect(chef_run).to render_file("/etc/init.d/#{chef_run.node['nrpe']['service_name']}").with_content('processname: nrpe')
   end
 
   it 'starts service called nrpe not nagios-nrpe-server' do
