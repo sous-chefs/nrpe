@@ -67,9 +67,9 @@ Attributes
 
 Resources/Providers
 -------------------
-### nrpecheck
+### check
 
-The nrpecheck LWRP provides an easy way to add and remove NRPE checks from within cookbooks.
+The check LWRP provides an easy way to add and remove NRPE checks from within cookbooks.
 
 #### Actions
 
@@ -81,24 +81,24 @@ The nrpecheck LWRP provides an easy way to add and remove NRPE checks from withi
 - `command_name`  The name of the check. This is the command that you will call from your nagios\_service data bag check
 - `warning_condition` String that you will pass to the command with the -w flag
 - `critical_condition` String that you will pass to the command with the -c flag
-- `command` The actual command to execute (including the path). If this is not specified, this will use `node'nrpe']['plugin_dir']/command_name` as the path to the command.
+- `command` The actual command to execute (including the path). If this is not specified, this will use `#{node['nrpe']['plugin_dir']}/command_name` as the path to the command.
 - `parameters` Any additional parameters you wish to pass to the plugin.
 
 #### Examples
 
 ```ruby
 # Use LWRP to define check_load
-nagios_nrpecheck "check_load" do
-  command "#{node'nrpe']['plugin_dir']}/check_load"
-  warning_condition node'nrpe']['checks']['load']['warning']
-  critical_condition node'nrpe']['checks']['load']['critical']
+nrpe_check "check_load" do
+  command "#{node['nrpe']['plugin_dir']}/check_load"
+  warning_condition "#{node['nrpe']['checks']['load']['warning']"
+  critical_condition "#{node['nrpe']['checks']['load']['critical']"
   action :add
 end
 ```
 
 ```ruby
 # Remove the check_load definition
-nagios_nrpecheck "check_load" do
+nrpe_check "check_load" do
   action :remove
 end
 ```
