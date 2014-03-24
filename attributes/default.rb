@@ -36,10 +36,8 @@ when 'debian'
   default['nrpe']['conf_dir']          = '/etc/nagios'
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib/i386-linux-gnu'
-    default['nrpe']['plugin_dir']      = '/usr/lib/nagios/plugins'
   else
     default['nrpe']['ssl_lib_dir']     = '/usr/lib/x86_64-linux-gnu'
-    default['nrpe']['plugin_dir']      = '/usr/lib64/nagios/plugins'
   end
   if node['nrpe']['install_method'] == 'package'
     default['nrpe']['service_name']    = 'nagios-nrpe-server'
