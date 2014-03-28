@@ -6,8 +6,8 @@ describe 'default installation' do
     runner.converge 'nrpe::default'
   end
 
-  it 'renders config file' do
-    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg')
+  it 'renders the nrpe config' do
+    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('include_dir=/etc/nagios/')
   end
 
   it 'creates nrpe.d directory' do
