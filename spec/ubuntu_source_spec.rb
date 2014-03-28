@@ -24,19 +24,19 @@ describe 'source install' do
   end
 
   it 'creates the nrpe user' do
-    expect(chef_run).to create_user(chef_run.node['nrpe']['user'])
+    expect(chef_run).to create_user('nagios')
   end
 
   it 'creates the nrpe group' do
-    expect(chef_run).to create_group(chef_run.node['nrpe']['group'])
+    expect(chef_run).to create_group('nagios')
   end
 
   it 'creates config dir' do
-    expect(chef_run).to create_directory(chef_run.node['nrpe']['conf_dir'])
+    expect(chef_run).to create_directory('/etc/nagios')
   end
 
   it 'templates init script' do
-    expect(chef_run).to render_file("/etc/init.d/#{chef_run.node['nrpe']['service_name']}").with_content('processname: nrpe')
+    expect(chef_run).to render_file('/etc/init.d/nrpe').with_content('processname: nrpe')
   end
 
   it 'starts service called nrpe not nagios-nrpe-server' do

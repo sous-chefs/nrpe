@@ -7,11 +7,11 @@ describe 'default installation' do
   end
 
   it 'renders config file' do
-    expect(chef_run).to render_file("#{chef_run.node['nrpe']['conf_dir']}/nrpe.cfg")
+    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg')
   end
 
   it 'creates nrpe.d directory' do
-    expect(chef_run).to create_directory("#{chef_run.node['nrpe']['conf_dir']}/nrpe.d")
+    expect(chef_run).to create_directory('/etc/nagios/nrpe.d')
   end
 
   it 'starts nrpe service' do
