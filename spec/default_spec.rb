@@ -6,18 +6,6 @@ describe 'default installation' do
     runner.converge 'nrpe::default'
   end
 
-  it 'renders the nrpe config' do
-    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('include_dir=/etc/nagios/')
-  end
-
-  it 'creates nrpe.d directory' do
-    expect(chef_run).to create_directory('/etc/nagios/nrpe.d')
-  end
-
-  it 'starts nrpe service' do
-    expect(chef_run).to start_service('nagios-nrpe-server')
-  end
-
   # it 'adds addresses to the allowed hosts when defined' do
 
   #   chef_run = runner(

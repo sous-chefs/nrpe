@@ -40,7 +40,7 @@ describe 'source install' do
     expect(chef_run).to render_file('/etc/init.d/nrpe').with_content('NrpeCfg=/etc/nagios/nrpe.cfg')
   end
 
-  it 'starts service called nrpe not nagios-nrpe-server' do
+  it 'starts service called nrpe' do
     expect(chef_run).to start_service('nrpe')
   end
 end
