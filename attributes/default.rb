@@ -51,9 +51,11 @@ when 'rhel', 'fedora'
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['home']            = '/usr/lib/nagios'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib'
+    default['nrpe']['plugin_dir']      = '/usr/lib/nagios/plugins'
   else
     default['nrpe']['home']            = '/usr/lib64/nagios'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib64'
+    default['nrpe']['plugin_dir']      = '/usr/lib64/nagios/plugins'
   end
   default['nrpe']['service_name']      = 'nrpe'
   default['nrpe']['conf_dir']          = '/etc/nagios'
