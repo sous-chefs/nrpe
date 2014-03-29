@@ -35,6 +35,10 @@ describe 'source install' do
     expect(chef_run).to create_directory('/etc/nagios')
   end
 
+  it 'creates nrpe.d dir' do
+    expect(chef_run).to create_directory('/etc/nagios/nrpe.d')
+  end
+
   it 'templates init script' do
     expect(chef_run).to render_file('/etc/init.d/nrpe').with_content('processname: nrpe')
     expect(chef_run).to render_file('/etc/init.d/nrpe').with_content('NrpeCfg=/etc/nagios/nrpe.cfg')
