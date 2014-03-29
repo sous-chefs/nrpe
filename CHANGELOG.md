@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.0.4
+* Expanded the chefspecs to multiple platforms and install methods
+* Fixed a bug where the plugin dir wasn't defined for RHEL platforms causing source install failures
+
 ## 1.0.2
 * Add chefspecs
 * Fix test kitchen setup on FreeBSD
