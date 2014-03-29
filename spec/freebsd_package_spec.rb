@@ -10,11 +10,15 @@ describe 'package install' do
     expect(chef_run).to include_recipe('nrpe::_package_install')
   end
 
+  it 'renders the nrpe config' do
+    expect(chef_run).to render_file('/usr/local/etc/nrpe.cfg').with_content('include_dir=/usr/local/etc/nrpe.d')
+  end
+
   it 'installs the correct packages' do
     expect(chef_run).to install_package('nrpe')
   end
 
-  it 'starts service called nrpe' do
+  it 'starts service called nrpe2' do
     expect(chef_run).to start_service('nrpe2')
   end
 
