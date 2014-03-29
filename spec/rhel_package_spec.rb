@@ -12,6 +12,7 @@ describe 'package install' do
 
   it 'renders the nrpe config' do
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('include_dir=/etc/nagios/nrpe.d')
+    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('/var/run/nrpe.pid')
   end
 
   it 'installs the correct packages' do
