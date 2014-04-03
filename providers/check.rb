@@ -33,7 +33,7 @@ action :add do
     group node['nrpe']['group']
     mode '0640'
     content file_contents
-    notifies :restart, "service[#{node['nrpe']['service_name']}]"
+    notifies :reload, "service[#{node['nrpe']['service_name']}]"
   end
   new_resource.updated_by_last_action(f.updated_by_last_action?)
 end
@@ -43,7 +43,7 @@ action :remove do
     Chef::Log.info "Removing #{new_resource.command_name} from #{node['nrpe']['conf_dir']}/nrpe.d/"
     f = file "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg" do
       action :delete
-      notifies :restart, "service[#{node['nrpe']['service_name']}]"
+      notifies :reload, "service[#{node['nrpe']['service_name']}]"
     end
     new_resource.updated_by_last_action(f.updated_by_last_action?)
   end
