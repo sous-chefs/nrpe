@@ -72,5 +72,5 @@ end
 
 service node['nrpe']['service_name'] do
   action [:start, :enable]
-  supports :restart => true, :status => false
+  supports :restart => true, :reload => true, :status => true
 end
