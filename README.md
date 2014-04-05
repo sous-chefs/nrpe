@@ -41,6 +41,8 @@ Attributes
 * `node['nrpe']['plugin_dir']` - location where Monitoring plugins (aka Nagios plugins) go, default '/usr/lib/nagios/plugins'.
 
 ### nrpe.conf attributes
+* `node['nrpe']['log_facility']` - syslog facility to log to, default nil (not set)
+* `node['nrpe']['command_prefix']` - command to prefix to every nrpe command (like perhaps sudo), default nil (not set)
 * `node['nrpe']['debug']` - debug level nrpe configuration, default 0
 * `node['nrpe']['connection_timeout']` - connection timeout for nrpe configuration, default nil (not set)
 * `node['nrpe']['dont_blame_nrpe']` - allows the server to send additional values to NRPE via arguments.  this needs to be enabled for most checks to function

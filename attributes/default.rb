@@ -81,6 +81,7 @@ default['nrpe']['user']  = 'nagios'
 default['nrpe']['group'] = 'nagios'
 
 # config file options
+default['nrpe']['command_prefix']     = nil
 default['nrpe']['log_facility']       = nil
 default['nrpe']['debug']              = 0
 default['nrpe']['dont_blame_nrpe']    = 0
