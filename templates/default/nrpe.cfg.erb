@@ -3,7 +3,7 @@
 <%= "log_facility=#{node['nrpe']['log_facility']}" unless node['nrpe']['log_facility'].nil? %>
 <%= "command_prefix=#{node['nrpe']['command_prefix']}" unless node['nrpe']['command_prefix'].nil? %>
 pid_file=<%= node['nrpe']['pid_file'] %>
-server_port=5666
+server_port=<%= node['nrpe']['server_port'] %>
 nrpe_user=<%= node['nrpe']['user'] %>
 nrpe_group=<%= node['nrpe']['group'] %>
 dont_blame_nrpe=<%= node['nrpe']['dont_blame_nrpe'] %>

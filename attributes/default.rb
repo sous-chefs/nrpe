@@ -81,6 +81,7 @@ default['nrpe']['user']  = 'nagios'
 default['nrpe']['group'] = 'nagios'
 
 # config file options
+default['nrpe']['server_port']        = 5666
 default['nrpe']['command_prefix']     = nil
 default['nrpe']['log_facility']       = nil
 default['nrpe']['debug']              = 0
