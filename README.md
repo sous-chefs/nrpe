@@ -42,6 +42,7 @@ Attributes
 
 ### nrpe.conf attributes
 * `node['nrpe']['server_port']` - the port nrpe will listen on, default 5666
+* `node['nrpe']['server_address']` - the IP the nrpe server will listen on. This allows you to bind to particular IPs in situations where the system has more than one IP. This is particularly handy in determining if nrpe should bind to the internal or public IP in a cloud environment. Set the attribute to the node attribute for the cloud interface you wish to use. Defaults to nil (not enabled)
 * `node['nrpe']['log_facility']` - syslog facility to log to, default nil (not set)
 * `node['nrpe']['command_prefix']` - command to prefix to every nrpe command (like perhaps sudo), default nil (not set)
 * `node['nrpe']['debug']` - debug level nrpe configuration, default 0
