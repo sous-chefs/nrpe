@@ -77,8 +77,8 @@ The check LWRP provides an easy way to add and remove NRPE checks from within co
 
 #### Actions
 
-- `:add` creates a NRPE configuration file and restart the NRPE process. Default action.
-- `:remove` removes the configuration file and restart the NRPE process
+- `:add` creates a NRPE configuration file and reloads the NRPE process. Default action.
+- `:remove` removes the configuration file and reloads the NRPE process
 
 #### Attribute Parameters
 
