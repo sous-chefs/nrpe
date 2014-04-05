@@ -63,7 +63,7 @@ Attributes
 * `node['nrpe']['server_role']` - the role that the Nagios server will have in its run list that the clients can search for.
 * `node['nrpe']['allowed_hosts']` - additional hosts that are allowed to connect to this client. Must be an array of strings (i.e. `%w(test.host other.host)`). These hosts are added in addition to 127.0.0.1 and IPs that are found via search.
 * `node['nrpe']['using_solo_search']` - discover server information in node data_bags even with chef solo through the use of solo-search (https://github.com/edelight/chef-solo-search)
-* `node['nrpe']['multi_environment_monitoring']` - Chef server will monitor hosts in all environments, not just its own, default 'false'
+* `node['nrpe']['multi_environment_monitoring']` - search for nagios servers in all environments not just that of the node when building the array of allowed hosts, default 'false'
 
 ### user and group attributes
 * `node['nrpe']['user']` - NRPE user, default 'nagios'.
