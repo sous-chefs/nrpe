@@ -1,5 +1,5 @@
 #
-# Author:: Seth Chisamore <schisamo@opscode.com>
+# Author:: Seth Chisamore <schisamo@getchef.com>
 # Author:: Tim Smith <tsmith84@gmail.com>
 # Cookbook Name:: nrpe
 # Recipe:: package_install

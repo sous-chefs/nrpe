@@ -106,9 +106,9 @@ end
 License & Authors
 -----------------
 - Author:: Joshua Sierles <joshua@37signals.com>
-- Author:: Nathan Haneysmith <nathan@opscode.com>
-- Author:: Joshua Timberman <joshua@opscode.com>
-- Author:: Seth Chisamore <schisamo@opscode.com>
+- Author:: Nathan Haneysmith <nathan@getchef.com>
+- Author:: Joshua Timberman <joshua@getchef.com>
+- Author:: Seth Chisamore <schisamo@getchef.com>
 - Author:: Tim Smith <tsmith84@gmail.com>
 
 ```text
