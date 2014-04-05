@@ -58,7 +58,6 @@ Attributes
 * `node['nrpe']['plugins']['version']` - version of the plugins source to download
 * `node['nrpe']['plugins']['checksum']` - checksum of the plugins source tarball
 
-
 ### authorization and server discovery
 * `node['nrpe']['server_role']` - the role that the Nagios server will have in its run list that the clients can search for.
 * `node['nrpe']['allowed_hosts']` - additional hosts that are allowed to connect to this client. Must be an array of strings (i.e. `%w(test.host other.host)`). These hosts are added in addition to 127.0.0.1 and IPs that are found via search.
@@ -72,16 +71,13 @@ Attributes
 Resources/Providers
 -------------------
 ### check
-
 The check LWRP provides an easy way to add and remove NRPE checks from within cookbooks.
 
 #### Actions
-
 - `:add` creates a NRPE configuration file and reloads the NRPE process. Default action.
 - `:remove` removes the configuration file and reloads the NRPE process
 
 #### Attribute Parameters
-
 - `command_name`  The name of the check. This is the command that you will call from your nagios\_service data bag check
 - `warning_condition` String that you will pass to the command with the -w flag
 - `critical_condition` String that you will pass to the command with the -c flag
@@ -89,7 +85,6 @@ The check LWRP provides an easy way to add and remove NRPE checks from within co
 - `parameters` Any additional parameters you wish to pass to the plugin.
 
 #### Examples
-
 ```ruby
 # Use LWRP to define check_load
 nrpe_check "check_load" do
