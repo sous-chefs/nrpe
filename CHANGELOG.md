@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.0.6
+* Reload NRPE instead of restarting it when a new check is added
+* Fix log_facility in the NRPE config to write out on its own line vs clobbering the config
+
 ## 1.0.4
 * Expanded the chefspecs to multiple platforms and install methods
 * Fixed a bug where the plugin dir wasn't defined for RHEL platforms causing source install failures
