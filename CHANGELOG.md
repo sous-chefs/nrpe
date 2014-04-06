@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.1.0
+* Added a server_address attribute to allow binding NRPE to the IP of a specific interface
+* Added a server_port attribute to allow changing the NRPE port
+* Added a command_prefix attribute to allow prefixing all commands with another command such as sudo
+* Minor fixes to the readme
+
 ## 1.0.6
 * Reload NRPE instead of restarting it when a new check is added
 * Fix log_facility in the NRPE config to write out on its own line vs clobbering the config
