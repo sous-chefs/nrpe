@@ -89,8 +89,8 @@ The check LWRP provides an easy way to add and remove NRPE checks from within co
 # Use LWRP to define check_load
 nrpe_check "check_load" do
   command "#{node['nrpe']['plugin_dir']}/check_load"
-  warning_condition "#{node['nrpe']['checks']['load']['warning']"
-  critical_condition "#{node['nrpe']['checks']['load']['critical']"
+  warning_condition "#{node['nrpe']['checks']['load']['warning']}"
+  critical_condition "#{node['nrpe']['checks']['load']['critical']}"
   action :add
 end
 ```
