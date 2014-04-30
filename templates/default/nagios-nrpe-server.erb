@@ -47,6 +47,15 @@ restart)
   sleep 1
   $0 start
   ;;
+status)
+  if pgrep $(basename $NrpeBin); then
+    echo "running"
+    exit 0
+  else
+    echo "stopped"
+    exit 3
+  fi
+  ;;
 *)
   echo "Usage: <%= node['nrpe']['service_name'] %> {start|stop|restart|status}"
   exit 1
