@@ -29,6 +29,9 @@ Recipes
 ### default
 Installs the NRPE client via packages or source depending on platform and attributes set
 
+### configure
+Configures the NRPE client. This will be called internally by the `default` recipe but can also be used to re-configure later on.
+
 Attributes
 ----------
 
