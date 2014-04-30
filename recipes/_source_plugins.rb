@@ -3,7 +3,7 @@
 # Cookbook Name:: nrpe
 # Recipe:: _source_plugins
 #
-# Copyright 2011-2013, Opscode, Inc.
+# Copyright 2011-2013, Chef Software, Inc..
 # Copyright 2012, Webtrends, Inc.
 # Copyright 2013-2014, Limelight Networks, Inc.
 #
