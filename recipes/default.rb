@@ -28,4 +28,4 @@
 include_recipe "nrpe::_#{node['nrpe']['install_method']}_install"
 
 # configure the nrpe daemon
-include_recipe "nrpe::configure"
+include_recipe 'nrpe::configure'
