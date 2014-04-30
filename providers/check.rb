@@ -39,7 +39,7 @@ action :add do
 end
 
 action :remove do
-  if ::File.exists?("#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg")
+  if ::File.exist?("#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg")
     Chef::Log.info "Removing #{new_resource.command_name} from #{node['nrpe']['conf_dir']}/nrpe.d/"
     f = file "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg" do
       action :delete
