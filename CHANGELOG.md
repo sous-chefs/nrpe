@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.1.2
+* Include an example base monitoring recipe with base NRPE checks defined
+* Fix the LWRP example in the Readme to reflect the current state of the cookbook
+
 ## 1.1.0
 * Added a server_address attribute to allow binding NRPE to the IP of a specific interface
 * Added a server_port attribute to allow changing the NRPE port
