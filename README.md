@@ -40,6 +40,9 @@ Attributes
 * `node['nrpe']['log_facility']` - log facility for nrpe configuration, default nil (not set)
 * `node['nrpe']['plugin_dir']` - location where Monitoring plugins (aka Nagios plugins) go, default '/usr/lib/nagios/plugins'.
 
+### options for package install
+* `node['nrpe']['package']['options']` - options when installing nrpe via package manager. The default value for this attribute is nil.`
+
 ### nrpe.conf attributes
 * `node['nrpe']['server_port']` - the port nrpe will listen on, default 5666
 * `node['nrpe']['server_address']` - the IP the nrpe server will listen on. This allows you to bind to particular IPs in situations where the system has more than one IP. This is particularly handy in determining if nrpe should bind to the internal or public IP in a cloud environment. Set the attribute to the node attribute for the cloud interface you wish to use. Defaults to nil (not enabled)

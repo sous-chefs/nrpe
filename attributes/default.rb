@@ -76,6 +76,9 @@ else
   default['nrpe']['conf_dir']          = '/etc/nagios'
 end
 
+# nrpe packge options
+default['nrpe']['package']['options'] = nil
+
 # nrpe daemon user/group
 default['nrpe']['user']  = 'nagios'
 default['nrpe']['group'] = 'nagios'
