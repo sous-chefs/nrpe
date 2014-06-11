@@ -3,6 +3,7 @@
 # Author:: Joshua Timberman <joshua@getchef.com>
 # Author:: Nathan Haneysmith <nathan@getchef.com>
 # Author:: Seth Chisamore <schisamo@getchef.com>
+# Author:: Tim Smith <tsmith@limelight.com>
 # Cookbook Name:: nrpe
 # Recipe:: default
 #
