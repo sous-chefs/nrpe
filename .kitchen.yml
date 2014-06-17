@@ -31,4 +31,10 @@ suites:
  - name: package
    run_list:
    - recipe[nrpe::default]
+ - name: source
+   run_list:
+   - recipe[nrpe::default]
+   attributes:
+     nrpe:
+       install_method: 'source'
 
