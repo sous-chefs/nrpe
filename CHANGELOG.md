@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.2.0
+* Add status / reload commands to the init script for source installs resolving issues with the service on source installs
+* Add new node['nrpe']['package']['options'] attribute for adding install options to the package install
+* Add Ubuntu 14.04 to the Test Kitchen config and remove Ubuntu 13.04
+* Add source install suite to Test Kitchen
+
 ## 1.1.2
 * Include an example base monitoring recipe with base NRPE checks defined
 * Fix the LWRP example in the Readme to reflect the current state of the cookbook
