@@ -28,6 +28,7 @@ fi
 <% end -%>
 NrpeBin=/usr/bin/nrpe
 NrpeCfg=<%= node['nrpe']['conf_dir'] %>/nrpe.cfg
+PidFile=<%= node['nrpe']['pid_file'] %>
 
 case "$1" in
 start)
@@ -47,8 +48,13 @@ restart)
   sleep 1
   $0 start
   ;;
+reload)
+  # reload the daemon.
+  echo "Reloading <%= node['nrpe']['service_name'] %> configuration files"
+  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>killproc -p $PidFile $NrpeBin -HUP<% else -%>start-stop-daemon --stop --signal HUP --quiet --pidfile $PidFile<% end -%>
+  ;;
 status)
-  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>status<% else -%>status_of_proc<% end -%> -p <%= node['nrpe']['pid_file'] %> <%= node['nrpe']['service_name'] %> && exit 0 || exit $?
+  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>status<% else -%>status_of_proc<% end -%> -p $PidFile <%= node['nrpe']['service_name'] %> && exit 0 || exit $?
   ;;
 *)
   echo "Usage: <%= node['nrpe']['service_name'] %> {start|stop|restart|status}"
