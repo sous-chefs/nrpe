@@ -50,7 +50,7 @@ if node.run_list.roles.include?(node['nrpe']['server_role'])
   mon_host << node['ipaddress'] unless mon_host.include?(node['ipaddress'])
 end
 
-# add any extra nagios servers defined via the 'allowed_hosta attribute'
+# add any extra nagios servers defined via the 'allowed_hosts attribute'
 mon_host.concat node['nrpe']['allowed_hosts'] if node['nrpe']['allowed_hosts']
 
 directory "#{node['nrpe']['conf_dir']}/nrpe.d" do
