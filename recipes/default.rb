@@ -65,7 +65,7 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   group node['nrpe']['group']
   mode '0644'
   variables(
-    :mon_host => mon_host,
+    :mon_host => mon_host.uniq.sort,
     :nrpe_directory => "#{node['nrpe']['conf_dir']}/nrpe.d"
   )
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
