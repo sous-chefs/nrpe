@@ -35,11 +35,11 @@ mon_host = ['127.0.0.1']
 if node.run_list.roles.include?(node['nrpe']['server_role'])
   mon_host << node['ipaddress']
 elsif node['nrpe']['multi_environment_monitoring']
-  search(:node, "role:#{node['nrpe']['server_role']}") do |n|
+  search(:node, "roles:#{node['nrpe']['server_role']}") do |n|
     mon_host << n['ipaddress']
   end
 elsif !Chef::Config[:solo] || node['nrpe']['using_solo_search']
-  search(:node, "role:#{node['nrpe']['server_role']} AND chef_environment:#{node.chef_environment}") do |n|
+  search(:node, "roles:#{node['nrpe']['server_role']} AND chef_environment:#{node.chef_environment}") do |n|
     mon_host << n['ipaddress']
   end
 end
