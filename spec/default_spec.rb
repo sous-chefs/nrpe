@@ -10,4 +10,14 @@ describe 'default installation' do
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('allowed_hosts=127.0.0.1')
   end
 
+  it 'expects nrpe config to not have allow_bash_command_substitution' do
+    expect(chef_run).not_to render_file('/etc/nagios/nrpe.cfg').with_content('allow_bash_command_substitution=0')
+  end
+
+  it 'expects nrpe config to have allow_bash_command_substitution when set' do
+    chef_run.node.set['nrpe']['allow_bash_command_substitution'] = 0
+    chef_run.converge('nrpe::default')
+
+    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('allow_bash_command_substitution=0')
+  end
 end
