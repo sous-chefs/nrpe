@@ -12,7 +12,8 @@ describe 'package install' do
 
   it 'renders the nrpe config' do
     expect(chef_run).to render_file('/usr/local/etc/nrpe.cfg').with_content('include_dir=/usr/local/etc/nrpe.d')
-    expect(chef_run).to render_file('/usr/local/etc/nrpe.cfg').with_content('/var/run/nrpe2/nrpe2.pid')
+    expect(chef_run).to render_file('/usr/local/etc/nrpe.cfg').with_content('pid_file=/var/run/nrpe2/nrpe2.pid')
+    expect(chef_run).to render_file('/usr/local/etc/nrpe.cfg').with_content('log_facility=daemon')
   end
 
   it 'installs the correct packages' do
