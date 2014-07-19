@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.3.0
+* Source lsb init-functions in the init script on Ubuntu source installs so the service doesn't start every run
+* Added new attribute node['nrpe']['allow_bash_command_substitution'] to allow using the allow_bash_command_substitution config option
+* When searching the the monitoring role search for roles vs. role so the monitoring role can be nested on the run_list
+* Sort and Unique the array of allowed monitor hosts.  This prevents NRPE from restarting on every run when the results come back in a different order
+* Fix deprecated warning when running specs
+
 ## 1.2.0
 * Add status / reload commands to the init script for source installs resolving issues with the service on source installs
 * Add new node['nrpe']['package']['options'] attribute for adding install options to the package install
