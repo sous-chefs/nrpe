@@ -25,6 +25,9 @@ fi
 # Check that networking is up.
 [ ${NETWORKING} = "no" ] && exit 0
 
+<% else -%>
+. /lib/lsb/init-functions
+
 <% end -%>
 NrpeBin=/usr/bin/nrpe
 NrpeCfg=<%= node['nrpe']['conf_dir'] %>/nrpe.cfg
