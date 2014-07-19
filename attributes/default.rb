@@ -96,8 +96,8 @@ default['nrpe']['connection_timeout']              = nil
 
 # for plugin from source installation
 default['nrpe']['plugins']['url']      = 'https://www.monitoring-plugins.org/download'
-default['nrpe']['plugins']['version']  = '1.5'
-default['nrpe']['plugins']['checksum'] = 'fcc55e23bbf1c70bcf1a90749d30249955d4668a9b776b2521da023c5c2f2170'
+default['nrpe']['plugins']['version']  = '2.0'
+default['nrpe']['plugins']['checksum'] = 'a91b0f68ff00661e0d69f28e3cf577541af98e0f6d09dd014328f132bde6c3fc'
 
 # for nrpe from source installation
 default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
