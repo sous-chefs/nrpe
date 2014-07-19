@@ -53,7 +53,9 @@ end
 # add any extra nagios servers defined via the 'allowed_hosts attribute'
 mon_host.concat node['nrpe']['allowed_hosts'] if node['nrpe']['allowed_hosts']
 
-directory "#{node['nrpe']['conf_dir']}/nrpe.d" do
+include_dir = "#{node['nrpe']['conf_dir']}/nrpe.d"
+
+directory include_dir do
   owner node['nrpe']['user']
   group node['nrpe']['group']
   mode '0755'
@@ -66,7 +68,7 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   mode '0644'
   variables(
     :mon_host => mon_host.uniq.sort,
-    :nrpe_directory => "#{node['nrpe']['conf_dir']}/nrpe.d"
+    :nrpe_directory => include_dir
   )
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end

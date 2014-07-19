@@ -84,14 +84,15 @@ default['nrpe']['user']  = 'nagios'
 default['nrpe']['group'] = 'nagios'
 
 # config file options
-default['nrpe']['server_port']        = 5666
-default['nrpe']['server_address']     = nil
-default['nrpe']['command_prefix']     = nil
-default['nrpe']['log_facility']       = nil
-default['nrpe']['debug']              = 0
-default['nrpe']['dont_blame_nrpe']    = 0
-default['nrpe']['command_timeout']    = 60
-default['nrpe']['connection_timeout'] = nil
+default['nrpe']['allow_bash_command_substitution'] = nil
+default['nrpe']['server_port']                     = 5666
+default['nrpe']['server_address']                  = nil
+default['nrpe']['command_prefix']                  = nil
+default['nrpe']['log_facility']                    = nil
+default['nrpe']['debug']                           = 0
+default['nrpe']['dont_blame_nrpe']                 = 0
+default['nrpe']['command_timeout']                 = 60
+default['nrpe']['connection_timeout']              = nil
 
 # for plugin from source installation
 default['nrpe']['plugins']['url']      = 'https://www.monitoring-plugins.org/download'
