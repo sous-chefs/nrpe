@@ -52,6 +52,7 @@ Attributes
 * `node['nrpe']['connection_timeout']` - connection timeout for nrpe configuration, default nil (not set)
 * `node['nrpe']['dont_blame_nrpe']` - allows the server to send additional values to NRPE via arguments.  this needs to be enabled for most checks to function
 * `node['nrpe']['command_timeout']` - the amount of time NRPE will wait for a command to execute before timing out
+* `node['nrpe']['allow_bash_command_substitution']` - allows bash command substitution in your nrpe commands - defaults to nil
 
 ### urls for source installations
 * `node['nrpe']['url']` - url to retrieve NRPE source
