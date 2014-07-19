@@ -25,6 +25,40 @@
 # limitations under the License.
 #
 
+# nrpe packge options
+default['nrpe']['package']['options'] = nil
+
+# nrpe daemon user/group
+default['nrpe']['user']  = 'nagios'
+default['nrpe']['group'] = 'nagios'
+
+# config file options
+default['nrpe']['allow_bash_command_substitution'] = nil
+default['nrpe']['server_port']                     = 5666
+default['nrpe']['server_address']                  = nil
+default['nrpe']['command_prefix']                  = nil
+default['nrpe']['log_facility']                    = nil
+default['nrpe']['debug']                           = 0
+default['nrpe']['dont_blame_nrpe']                 = 0
+default['nrpe']['command_timeout']                 = 60
+default['nrpe']['connection_timeout']              = nil
+
+# for plugin from source installation
+default['nrpe']['plugins']['url']      = 'https://www.monitoring-plugins.org/download'
+default['nrpe']['plugins']['version']  = '2.0'
+default['nrpe']['plugins']['checksum'] = 'a91b0f68ff00661e0d69f28e3cf577541af98e0f6d09dd014328f132bde6c3fc'
+
+# for nrpe from source installation
+default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
+default['nrpe']['version']  = '2.15'
+default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072'
+
+# authorization options
+default['nrpe']['server_role'] = 'monitoring'
+default['nrpe']['allowed_hosts'] = nil
+default['nrpe']['using_solo_search'] = false
+default['nrpe']['multi_environment_monitoring'] = false
+
 # platform specific values
 case node['platform_family']
 when 'debian'
@@ -75,37 +109,3 @@ else
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
 end
-
-# nrpe packge options
-default['nrpe']['package']['options'] = nil
-
-# nrpe daemon user/group
-default['nrpe']['user']  = 'nagios'
-default['nrpe']['group'] = 'nagios'
-
-# config file options
-default['nrpe']['allow_bash_command_substitution'] = nil
-default['nrpe']['server_port']                     = 5666
-default['nrpe']['server_address']                  = nil
-default['nrpe']['command_prefix']                  = nil
-default['nrpe']['log_facility']                    = nil
-default['nrpe']['debug']                           = 0
-default['nrpe']['dont_blame_nrpe']                 = 0
-default['nrpe']['command_timeout']                 = 60
-default['nrpe']['connection_timeout']              = nil
-
-# for plugin from source installation
-default['nrpe']['plugins']['url']      = 'https://www.monitoring-plugins.org/download'
-default['nrpe']['plugins']['version']  = '2.0'
-default['nrpe']['plugins']['checksum'] = 'a91b0f68ff00661e0d69f28e3cf577541af98e0f6d09dd014328f132bde6c3fc'
-
-# for nrpe from source installation
-default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
-default['nrpe']['version']  = '2.15'
-default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072'
-
-# authorization options
-default['nrpe']['server_role'] = 'monitoring'
-default['nrpe']['allowed_hosts'] = nil
-default['nrpe']['using_solo_search'] = false
-default['nrpe']['multi_environment_monitoring'] = false
