@@ -23,17 +23,17 @@
 
 plugins_version = node['nrpe']['plugins']['version']
 
-remote_file "#{Chef::Config[:file_cache_path]}/nagios-plugins-#{plugins_version}.tar.gz" do
-  source "#{node['nrpe']['plugins']['url']}/nagios-plugins-#{plugins_version}.tar.gz"
+remote_file "#{Chef::Config[:file_cache_path]}/monitoring-plugins-#{plugins_version}.tar.gz" do
+  source "#{node['nrpe']['plugins']['url']}/monitoring-plugins-#{plugins_version}.tar.gz"
   checksum node['nrpe']['plugins']['checksum']
   action :create_if_missing
 end
 
-bash 'compile-nagios-plugins' do
+bash 'compile-monitoring-plugins' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-    tar zxvf nagios-plugins-#{plugins_version}.tar.gz
-    cd nagios-plugins-#{plugins_version}
+    tar zxvf monitoring-plugins-#{plugins_version}.tar.gz
+    cd monitoring-plugins-#{plugins_version}
     ./configure --with-nagios-user=#{node['nrpe']['user']} \
                 --with-nagios-group=#{node['nrpe']['group']} \
                 --prefix=/usr \
