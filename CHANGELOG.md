@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.4.0
+* Update from nagios-plugins to monitoring-plugins in source installs since the project name changed
+* Update nagios-plugins 1.5 to 2.0 for source installs
+* Reorder the attributes so that FreeBSD has log_facility properly set
+* Add additional specs and update specs to the latest Debian / FreeBSD releases
+* Update Berkshelf to 3.1.X and update the Berksfile to the new format
+
 ## 1.3.0
 * Source lsb init-functions in the init script on Ubuntu source installs so the service doesn't start every run
 * Added new attribute node['nrpe']['allow_bash_command_substitution'] to allow using the allow_bash_command_substitution config option
