@@ -32,9 +32,7 @@ include_recipe "nrpe::_#{node['nrpe']['install_method']}_install"
 mon_host = ['127.0.0.1']
 
 # search for nagios servers and add them to the mon_host array as well
-if node.run_list.roles.include?(node['nrpe']['server_role'])
-  mon_host << node['ipaddress']
-elsif node['nrpe']['multi_environment_monitoring']
+if node['nrpe']['multi_environment_monitoring']
   search(:node, "roles:#{node['nrpe']['server_role']}") do |n|
     mon_host << n['ipaddress']
   end
