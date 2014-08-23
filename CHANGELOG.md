@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.4.2
+* NRPE running on a Nagios server would not enable polling from other Nagios servers
+
 ## 1.4.0
 * Update from nagios-plugins to monitoring-plugins in source installs since the project name changed
 * Update nagios-plugins 1.5 to 2.0 for source installs
