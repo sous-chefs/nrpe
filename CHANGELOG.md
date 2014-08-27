@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.4.4
+* Add a chefignore file so that Berkshelf wont fail on dsstore files
+
 ## 1.4.2
 * NRPE running on a Nagios server would not enable polling from other Nagios servers
 
