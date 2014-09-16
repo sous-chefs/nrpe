@@ -29,9 +29,16 @@ if platform_family?('rhel', 'fedora')
   end
 end
 
+# update apt repositories on debian platforms before installing
+case node['platform_family']
+when 'debian'
+  include_recipe 'apt'
+end
+
 # install the nrpe packages specified in the ['nrpe']['packages'] attribute
 node['nrpe']['packages'].each do |pkg|
   package pkg do
     options node['nrpe']['package']['options'] unless node['nrpe']['package']['options'].nil?
   end
 end
+
