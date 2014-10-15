@@ -64,5 +64,4 @@ Vagrant::Config.run do |config|
     nagios.vm.host_name = 'nrpe-fedora-20'
   end
 
-
 end
