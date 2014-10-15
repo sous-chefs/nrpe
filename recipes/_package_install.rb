@@ -1,6 +1,6 @@
 #
 # Author:: Seth Chisamore <schisamo@getchef.com>
-# Author:: Tim Smith <tsmith@limelight.com>
+# Author:: Tim Smith <tsmith84@gmail.com>
 # Cookbook Name:: nrpe
 # Recipe:: package_install
 #
@@ -24,7 +24,7 @@
 # nrpe packages are available in EPEL on rhel / fedora platforms
 # fedora 17 and later don't require epel
 if platform_family?('rhel', 'fedora')
-  unless platform?('fedora') && node['platform_version'] < 17
+  unless platform?('fedora') && node['platform_version'].to_i > 16
     include_recipe 'yum-epel'
   end
 end
