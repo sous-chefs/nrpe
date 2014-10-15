@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of nrpe
 
+
+## 1.4.6
+* Update specs to Chefspec 4.1
+* Add additional platforms to the Vagrantfile
+* Fix a compile error / logic error when running on Fedora
+
 ## 1.4.4
 * Add a chefignore file so that Berkshelf wont fail on dsstore files
 

@@ -1,6 +1,6 @@
 #
 # Author:: Seth Chisamore <schisamo@getchef.com>
-# Author:: Tim Smith <tsmith@limelight.com>
+# Author:: Tim Smith <tsmith84@gmail.com>
 # Cookbook Name:: nrpe
 # Recipe:: _source_plugins
 #

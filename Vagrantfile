@@ -19,6 +19,7 @@ end
 
 Vagrant::Config.run do |config|
   config.vm.provision :chef_client do |chef|
+    chef.formatter = :doc
     chef.add_recipe('apt')
     chef.add_recipe('nrpe')
   end
