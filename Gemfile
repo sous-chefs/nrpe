@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'strainer'
 gem 'berkshelf',  '~> 3.1.0'
 gem 'chefspec',   '~> 4.1.0'
 gem 'foodcritic', '~> 4.0.0'

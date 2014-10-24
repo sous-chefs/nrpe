@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+# 1.4.8
+* Rubocop fixes
+* Remove .DS_Store files in the supermarket file that caused failures on older versions of Berkshelf
+* Remove strainer gem from Gemfile
 
 ## 1.4.6
 * Update specs to Chefspec 4.1
