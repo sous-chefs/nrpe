@@ -27,6 +27,8 @@ _Store
 .yardoc
 _yardoc
 doc/
+.idea
+.ruby-version
 
 #chef stuff
 Berksfile.lock
@@ -34,6 +36,7 @@ Berksfile.lock
 .kitchen.local.yml
 vendor/
 .coverage/
+.zero-knife.rb
 
 #vagrant stuff
 .vagrant/
