@@ -58,6 +58,8 @@ default['nrpe']['server_role'] = 'monitoring'
 default['nrpe']['allowed_hosts'] = nil
 default['nrpe']['using_solo_search'] = false
 default['nrpe']['multi_environment_monitoring'] = false
+# this is mostly true except for centos-70
+default['nrpe']['check_action'] = 'reload'
 
 # platform specific values
 case node['platform_family']
@@ -68,6 +70,7 @@ when 'debian'
   default['nrpe']['packages']          = %w(nagios-nrpe-server nagios-plugins nagios-plugins-basic nagios-plugins-standard)
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
+  default['nrpe']['check_action']      = 'reload'
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib/i386-linux-gnu'
   else
@@ -79,6 +82,10 @@ when 'debian'
     default['nrpe']['service_name']    = 'nrpe'
   end
 when 'rhel', 'fedora'
+  case node['platform_version'].to_i
+  when 7
+    default['nrpe']['check_action'] = 'restart'
+  end
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
   default['nrpe']['packages']          = %w(nrpe nagios-plugins-disk nagios-plugins-load nagios-plugins-procs nagios-plugins-users)
