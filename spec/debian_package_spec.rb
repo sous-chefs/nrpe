@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'package install' do
-
   let(:chef_run) do
     runner = ChefSpec::ServerRunner.new(platform: 'debian', version: '7.5')
     runner.converge 'nrpe::default'
@@ -30,5 +29,4 @@ describe 'package install' do
     expect(chef_run).to install_package('nagios-plugins-basic')
     expect(chef_run).to install_package('nagios-plugins-standard')
   end
-
 end

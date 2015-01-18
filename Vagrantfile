@@ -14,7 +14,6 @@ Vagrant.configure('2') do |config|
   unless Vagrant.has_plugin?('vagrant-chef-zero')
     fail 'Vagrant Chef Zero plugin not installed.  Run: vagrant plugin install vagrant-chef-zero'
   end
-
 end
 
 Vagrant::Config.run do |config|
@@ -68,5 +67,4 @@ Vagrant::Config.run do |config|
     nagios.vm.box = 'chef/fedora-20'
     nagios.vm.host_name = 'nrpe-fedora-20'
   end
-
 end

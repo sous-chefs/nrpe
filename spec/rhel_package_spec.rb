@@ -26,5 +26,4 @@ describe 'package install' do
   it 'starts service called nrpe' do
     expect(chef_run).to start_service('nrpe')
   end
-
 end
