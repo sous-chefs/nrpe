@@ -8,4 +8,3 @@ nrpe_check 'check_root_disk_space' do
   parameters '-p /'
   action :add
 end
-
