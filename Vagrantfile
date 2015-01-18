@@ -59,6 +59,11 @@ Vagrant::Config.run do |config|
     nagios.vm.host_name = 'nrpe-65'
   end
 
+  config.vm.define :nrpe_centos_70 do |nagios|
+    nagios.vm.box = 'chef/centos-7.0'
+    nagios.vm.host_name = 'nrpe-70'
+  end
+
   config.vm.define :nrpe_fedora_20 do |nagios|
     nagios.vm.box = 'chef/fedora-20'
     nagios.vm.host_name = 'nrpe-fedora-20'
