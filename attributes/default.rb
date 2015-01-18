@@ -70,7 +70,6 @@ when 'debian'
   default['nrpe']['packages']          = %w(nagios-nrpe-server nagios-plugins nagios-plugins-basic nagios-plugins-standard)
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
-  default['nrpe']['check_action']      = 'reload'
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib/i386-linux-gnu'
   else
