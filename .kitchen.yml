@@ -38,4 +38,6 @@ suites:
    attributes:
      nrpe:
        install_method: 'source'
-
+ - name: check
+   run_list:
+   - recipe[chef_nrpe_test::default]
