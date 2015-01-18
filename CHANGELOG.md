@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+# 1.4.10
+* Add support for CentOS / RHEL
+* Update the LWRP to use the default action functionality introduced in Chef 0.10.10
+
 # 1.4.8
 * Rubocop fixes
 * Remove .DS_Store files in the supermarket file that caused failures on older versions of Berkshelf
