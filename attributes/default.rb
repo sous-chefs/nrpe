@@ -49,7 +49,7 @@ default['nrpe']['plugins']['version']  = '2.0'
 default['nrpe']['plugins']['checksum'] = 'a91b0f68ff00661e0d69f28e3cf577541af98e0f6d09dd014328f132bde6c3fc'
 
 # for nrpe from source installation
-default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
+default['nrpe']['url']      = 'http://ufpr.dl.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15'
 default['nrpe']['version']  = '2.15'
 default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072'
 
