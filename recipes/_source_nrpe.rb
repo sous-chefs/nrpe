@@ -44,7 +44,7 @@ bash 'compile-nagios-nrpe' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     tar zxvf nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}.tar.gz
-    cd nrpe-#{node['nrpe']['version']}
+    cd nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var \
