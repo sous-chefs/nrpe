@@ -20,8 +20,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+http://ufpr.dl.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15
 
-remote_file "#{Chef::Config[:file_cache_path]}/nrpe-#{node['nrpe']['version']}.tar.gz" do
+remote_file "#{Chef::Config[:file_cache_path]}/nrpe-#{node['nrpe']['major_version']}.x/nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}/nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}.tar.gz" do
   source "#{node['nrpe']['url']}/nrpe-#{node['nrpe']['version']}.tar.gz"
   checksum node['nrpe']['checksum']
   action :create_if_missing
