@@ -61,6 +61,9 @@ default['nrpe']['multi_environment_monitoring'] = false
 # this is mostly true except for centos-70
 default['nrpe']['check_action'] = 'reload'
 
+# attribute for storing information about checks on the node
+default['nrpe']['checks'] = []
+
 # platform specific values
 case node['platform_family']
 when 'debian'

@@ -75,3 +75,11 @@ service node['nrpe']['service_name'] do
   action [:start, :enable]
   supports :restart => true, :reload => true, :status => true
 end
+
+# The updating of the list of checks.
+ruby_block 'updating of the list of checks' do
+  block do
+    checks = run_context.resource_collection.select { |r| r.is_a?(Chef::Resource::NrpeCheck) && r.action == [:add] }.map(&:command_name)
+    node.set['nrpe']['checks'] = checks
+  end
+end
