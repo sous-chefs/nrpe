@@ -89,6 +89,7 @@ when 'rhel', 'fedora'
     default['nrpe']['check_action'] = 'restart'
   end
   default['nrpe']['install_method']    = 'package'
+  default['nrpe']['install_yum-epel']  = true
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
   default['nrpe']['packages']          = %w(nrpe nagios-plugins-disk nagios-plugins-load nagios-plugins-procs nagios-plugins-users)
   if node['kernel']['machine'] == 'i686'
