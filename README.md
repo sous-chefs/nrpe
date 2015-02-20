@@ -43,6 +43,7 @@ Attributes
 
 ### options for package install
 * `node['nrpe']['package']['options']` - options when installing nrpe via package manager. The default value for this attribute is nil.`
+* `node['nrpe']['install_yum-epel']` - whether to install the EPEL repo or not. The default value is `true`. Set this to `false` if you do not wish to install the EPEL RPM; in this scenario you will need to make the relevant NRPE packages available via another method e.g. local repo.
 
 ### nrpe.conf attributes
 * `node['nrpe']['server_port']` - the port nrpe will listen on, default 5666
