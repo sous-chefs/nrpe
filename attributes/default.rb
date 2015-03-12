@@ -71,17 +71,17 @@ when 'debian'
   default['nrpe']['pid_file']          = '/var/run/nagios/nrpe.pid'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['packages']          = {
-    "nagios-nrpe-server" => {
-      "version" => nil
+    'nagios-nrpe-server' => {
+      'version' => nil
     },
-    "nagios-plugins" => {
-      "version" => nil
+    'nagios-plugins' => {
+      'version' => nil
     },
-    "nagios-plugins-basic" => {
-      "version" => nil
+    'nagios-plugins-basic' => {
+      'version' => nil
     },
-    "nagios-plugins-standard" => {
-      "version" => nil
+    'nagios-plugins-standard' => {
+      'version' => nil
     }
   }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
@@ -105,20 +105,20 @@ when 'rhel', 'fedora'
   default['nrpe']['install_yum-epel']  = true
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
   default['nrpe']['packages']          = {
-    "nrpe" => {
-      "version" => nil
+    'nrpe' => {
+      'version' => nil
     },
-    "nagios-plugins-disk" => {
-      "version" => nil
+    'nagios-plugins-disk' => {
+      'version' => nil
     },
-    "nagios-plugins-load" => {
-      "version" => nil
+    'nagios-plugins-load' => {
+      'version' => nil
     },
-    "nagios-plugins-procs" => {
-      "version" => nil
+    'nagios-plugins-procs' => {
+      'version' => nil
     },
-    "nagios-plugins-users" => {
-      "version" => nil
+    'nagios-plugins-users' => {
+      'version' => nil
     }
   }
   if node['kernel']['machine'] == 'i686'
@@ -136,8 +136,8 @@ when 'freebsd'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
   default['nrpe']['packages']          = {
-    "nrpe" => {
-      "version" => nil
+    'nrpe' => {
+      'version' => nil
     }
   }
   default['nrpe']['log_facility']      = 'daemon'

@@ -37,17 +37,17 @@ end
 #
 # By default followings are defined and can be adjusted for your tate in your wrapper cookbook
 #   default['nrpe']['packages'] = {
-#     "nagios-nrpe-server"      => {"version" => nil},
-#     "nagios-plugins"          => {"version" => nil},
-#     "nagios-plugins-basic"    => {"version" => nil},
-#     "nagios-plugins-standard" => {"version" => nil}
+#     'nagios-nrpe-server'      => {'version' => nil},
+#     'nagios-plugins'          => {'version' => nil},
+#     'nagios-plugins-basic'    => {'version' => nil},
+#     'nagios-plugins-standard' => {'version' => nil}
 #   }
 # These version information can be overriden in your environment specific attributes so you can intall any version you prefer
 #
 
-node['nrpe']['packages'].each do |pkg,pkg_details|
+node['nrpe']['packages'].each do |pkg, pkg_details|
   package pkg do
-    version pkg_details["version"] unless pkg_details["version"].nil?
+    version pkg_details['version'] unless pkg_details['version'].nil?
     options node['nrpe']['package']['options'] unless node['nrpe']['package']['options'].nil?
   end
 end
