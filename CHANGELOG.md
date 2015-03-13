@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of nrpe
 
+# UNRELEASED
+* Added default['nrpe']['checks'] to store all checks as a node attribute
+* Removed Ruby 1.9.3 and added Ruby 2.2.0 to Travis
+* Make the yum-epel recipe optional with default['nrpe']['install_yum-epel']
+
 # 1.4.10
 * Add support for CentOS / RHEL
 * Update the LWRP to use the default action functionality introduced in Chef 0.10.10
