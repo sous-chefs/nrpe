@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of nrpe
 
-# UNRELEASED
+# 1.4.12 
 * Added default['nrpe']['checks'] to store all checks as a node attribute
 * Removed Ruby 1.9.3 and added Ruby 2.2.0 to Travis
 * Make the yum-epel recipe optional with default['nrpe']['install_yum-epel']
