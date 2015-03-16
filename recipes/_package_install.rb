@@ -30,8 +30,24 @@ if platform_family?('rhel', 'fedora') && node['nrpe']['install_yum-epel']
 end
 
 # install the nrpe packages specified in the ['nrpe']['packages'] attribute
-node['nrpe']['packages'].each do |pkg|
+#
+# It is defined as Hash.
+#
+# In the hash, by default versions for each packages is nil. So it will install the latest one available in repositories.
+#
+# By default followings are defined and can be adjusted for your tate in your wrapper cookbook
+#   default['nrpe']['packages'] = {
+#     'nagios-nrpe-server'      => {'version' => nil},
+#     'nagios-plugins'          => {'version' => nil},
+#     'nagios-plugins-basic'    => {'version' => nil},
+#     'nagios-plugins-standard' => {'version' => nil}
+#   }
+# These version information can be overriden in your environment specific attributes so you can intall any version you prefer
+#
+
+node['nrpe']['packages'].each do |pkg, pkg_details|
   package pkg do
+    version pkg_details['version'] unless pkg_details['version'].nil?
     options node['nrpe']['package']['options'] unless node['nrpe']['package']['options'].nil?
   end
 end
