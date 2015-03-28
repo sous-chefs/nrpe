@@ -70,7 +70,20 @@ when 'debian'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['pid_file']          = '/var/run/nagios/nrpe.pid'
   default['nrpe']['home']              = '/usr/lib/nagios'
-  default['nrpe']['packages']          = %w(nagios-nrpe-server nagios-plugins nagios-plugins-basic nagios-plugins-standard)
+  default['nrpe']['packages']          = {
+    'nagios-nrpe-server' => {
+      'version' => nil
+    },
+    'nagios-plugins' => {
+      'version' => nil
+    },
+    'nagios-plugins-basic' => {
+      'version' => nil
+    },
+    'nagios-plugins-standard' => {
+      'version' => nil
+    }
+  }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
   if node['kernel']['machine'] == 'i686'
@@ -91,7 +104,23 @@ when 'rhel', 'fedora'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['install_yum-epel']  = true
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
-  default['nrpe']['packages']          = %w(nrpe nagios-plugins-disk nagios-plugins-load nagios-plugins-procs nagios-plugins-users)
+  default['nrpe']['packages']          = {
+    'nrpe' => {
+      'version' => nil
+    },
+    'nagios-plugins-disk' => {
+      'version' => nil
+    },
+    'nagios-plugins-load' => {
+      'version' => nil
+    },
+    'nagios-plugins-procs' => {
+      'version' => nil
+    },
+    'nagios-plugins-users' => {
+      'version' => nil
+    }
+  }
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['home']            = '/usr/lib/nagios'
     default['nrpe']['ssl_lib_dir']     = '/usr/lib'
@@ -106,7 +135,11 @@ when 'rhel', 'fedora'
 when 'freebsd'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
-  default['nrpe']['packages']          = %w(nrpe)
+  default['nrpe']['packages']          = {
+    'nrpe' => {
+      'version' => nil
+    }
+  }
   default['nrpe']['log_facility']      = 'daemon'
   default['nrpe']['service_name']      = 'nrpe2'
   default['nrpe']['conf_dir']          = '/usr/local/etc'
