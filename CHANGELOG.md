@@ -2,6 +2,21 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.5.0
+* Added ability to define node['nrpe']['packages'] as a Hash to add version information as sample below. 
+  In your environment specific cookbook, this version infomation for each individual package can be overriden 
+  for required versions (instead of latest one). If it is nil it will install latest one from repositories.
+
+  Sample:
+  default['nrpe']['packages'] = {
+    'nagios-nrpe-server'      => {'version' => nil},
+    'nagios-plugins'          => {'version' => nil},
+    'nagios-plugins-basic'    => {'version' => nil},
+    'nagios-plugins-standard' => {'version' => nil}
+  }
+
+  For backward compatibiility, it will also install packages if it is defined as an array in your env specific cookbook.
+
 # 1.4.12 
 * Added default['nrpe']['checks'] to store all checks as a node attribute
 * Removed Ruby 1.9.3 and added Ruby 2.2.0 to Travis
