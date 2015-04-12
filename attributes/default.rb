@@ -25,7 +25,7 @@
 # limitations under the License.
 #
 
-# nrpe packge options
+# nrpe package options
 default['nrpe']['package']['options'] = nil
 
 # nrpe daemon user/group
