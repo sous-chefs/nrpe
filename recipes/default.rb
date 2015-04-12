@@ -54,16 +54,16 @@ mon_host.concat node['nrpe']['allowed_hosts'] if node['nrpe']['allowed_hosts']
 include_dir = "#{node['nrpe']['conf_dir']}/nrpe.d"
 
 directory include_dir do
-  owner node['nrpe']['user']
+  owner 'root'
   group node['nrpe']['group']
-  mode '0755'
+  mode '0750'
 end
 
 template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   source 'nrpe.cfg.erb'
-  owner node['nrpe']['user']
+  owner 'root'
   group node['nrpe']['group']
-  mode '0644'
+  mode '0640'
   variables(
     :mon_host => mon_host.uniq.sort,
     :nrpe_directory => include_dir

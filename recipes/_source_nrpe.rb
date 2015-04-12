@@ -29,15 +29,15 @@ end
 
 template "/etc/init.d/#{node['nrpe']['service_name']}" do
   source 'nagios-nrpe-server.erb'
-  owner node['nrpe']['user']
-  group node['nrpe']['group']
-  mode  '0755'
+  owner 'root'
+  group 'root'
+  mode  '0754'
 end
 
 directory node['nrpe']['conf_dir'] do
-  owner node['nrpe']['user']
+  owner 'root'
   group node['nrpe']['group']
-  mode  '0755'
+  mode  '0750'
 end
 
 bash 'compile-nagios-nrpe' do
