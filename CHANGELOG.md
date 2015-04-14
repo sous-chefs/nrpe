@@ -3,6 +3,7 @@
 This file is used to list changes made in each version of nrpe
 
 ## 1.5.0
+* Added 3 retries with a delay of 3 to the nrpe service start for RHEL/CentOS 7
 * Added ability to define node['nrpe']['packages'] as a Hash to add version information as sample below. 
   In your environment specific cookbook, this version infomation for each individual package can be overriden 
   for required versions (instead of latest one). If it is nil it will install latest one from repositories.
