@@ -29,8 +29,13 @@
 default['nrpe']['package']['options'] = nil
 
 # nrpe daemon user/group
-default['nrpe']['user']  = 'nagios'
-default['nrpe']['group'] = 'nagios'
+if node['platform_version'].to_i == 7
+  default['nrpe']['user']  = 'nrpe'
+  default['nrpe']['group'] = 'nrpe'
+else 
+  default['nrpe']['user']  = 'nagios'
+  default['nrpe']['group'] = 'nagios'
+end
 
 # config file options
 default['nrpe']['allow_bash_command_substitution'] = nil
