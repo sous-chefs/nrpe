@@ -29,7 +29,7 @@
 default['nrpe']['package']['options'] = nil
 
 # nrpe daemon user/group
-if node['platform_version'].to_i == 7
+if node['platform_family'] == 'rhel' && node['platform_version'].to_i == 7
   default['nrpe']['user']  = 'nrpe'
   default['nrpe']['group'] = 'nrpe'
 else 
