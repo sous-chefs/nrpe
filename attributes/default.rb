@@ -32,7 +32,7 @@ default['nrpe']['package']['options'] = nil
 if node['platform_family'] == 'rhel' && node['platform_version'].to_i == 7
   default['nrpe']['user']  = 'nrpe'
   default['nrpe']['group'] = 'nrpe'
-else 
+else
   default['nrpe']['user']  = 'nagios'
   default['nrpe']['group'] = 'nagios'
 end
