@@ -22,13 +22,13 @@ _Store
 *.tmp
 *.bk
 *.bkup
+.ruby-version
+.idea
 
 # YARD artifacts
 .yardoc
 _yardoc
 doc/
-.idea
-.ruby-version
 
 #chef stuff
 Berksfile.lock
