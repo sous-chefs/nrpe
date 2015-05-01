@@ -2,10 +2,15 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.5.2
+* Fedora 20+ / RHEL 7+ systems now run the daemon as nrpe/nrpe since the user installed by the package changed
+* Fedora 20+ / RHEL 7+ systems now restart on check updates since the systemd scipt doesn't include a reload action
+* Removed the retry count for starting the NRPE service, which didn't fix the real issue on RHEL 7+
+
 ## 1.5.0
 * Added 3 retries with a delay of 3 to the nrpe service start for RHEL/CentOS 7
-* Added ability to define node['nrpe']['packages'] as a Hash to add version information as sample below. 
-  In your environment specific cookbook, this version infomation for each individual package can be overriden 
+* Added ability to define node['nrpe']['packages'] as a Hash to add version information as sample below.
+  In your environment specific cookbook, this version infomation for each individual package can be overriden
   for required versions (instead of latest one). If it is nil it will install latest one from repositories.
 
   Sample:
@@ -18,7 +23,7 @@ This file is used to list changes made in each version of nrpe
 
   For backward compatibiility, it will also install packages if it is defined as an array in your env specific cookbook.
 
-# 1.4.12 
+# 1.4.12
 * Added default['nrpe']['checks'] to store all checks as a node attribute
 * Removed Ruby 1.9.3 and added Ruby 2.2.0 to Travis
 * Make the yum-epel recipe optional with default['nrpe']['install_yum-epel']
