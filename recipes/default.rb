@@ -74,8 +74,6 @@ end
 service node['nrpe']['service_name'] do
   action [:start, :enable]
   supports :restart => true, :reload => true, :status => true
-  retries 3
-  retry_delay 3
 end
 
 # The updating of the list of checks.
