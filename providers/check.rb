@@ -29,7 +29,7 @@ action :add do
   file_contents += " -c #{new_resource.critical_condition}" unless new_resource.critical_condition.nil?
   file_contents += " #{new_resource.parameters}" unless new_resource.parameters.nil?
   f = file "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg" do
-    owner node['nrpe']['user']
+    owner 'root'
     group node['nrpe']['group']
     mode '0640'
     content file_contents
