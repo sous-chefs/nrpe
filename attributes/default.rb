@@ -28,14 +28,9 @@
 # nrpe package options
 default['nrpe']['package']['options'] = nil
 
-# nrpe daemon user/group
-if node['platform_family'] == 'rhel' && node['platform_version'].to_i == 7
-  default['nrpe']['user']  = 'nrpe'
-  default['nrpe']['group'] = 'nrpe'
-else
-  default['nrpe']['user']  = 'nagios'
-  default['nrpe']['group'] = 'nagios'
-end
+# default user / group for NRPE on most platforms
+default['nrpe']['user']  = 'nagios'
+default['nrpe']['group'] = 'nagios'
 
 # config file options
 default['nrpe']['allow_bash_command_substitution'] = nil
@@ -102,9 +97,11 @@ when 'debian'
     default['nrpe']['service_name']    = 'nrpe'
   end
 when 'rhel', 'fedora'
-  case node['platform_version'].to_i
-  when 7
+  # support systemd init script and the new NRPE user on modern RHEL / Fedora
+  if node['platform_version'].to_i == 7 || node['platform_version'].to_i >= 20
     default['nrpe']['check_action'] = 'restart'
+    default['nrpe']['user']  = 'nrpe'
+    default['nrpe']['group'] = 'nrpe'
   end
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['install_yum-epel']  = true
