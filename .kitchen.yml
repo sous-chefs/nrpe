@@ -1,4 +1,3 @@
----
 driver:
   name: vagrant
 
@@ -15,10 +14,10 @@ platforms:
   - name: ubuntu-10.04
     run_list:
     - recipe[apt::default]
-  - name: debian-7.2.0
+  - name: debian-7.7
     run_list:
     - recipe[apt::default]
-  - name: debian-6.0.8
+  - name: debian-6.0.10
     run_list:
     - recipe[apt::default]
   - name: freebsd-9.2
@@ -27,6 +26,8 @@ platforms:
   - name: centos-7.0
   - name: centos-6.6
   - name: centos-5.10
+  - name: fedora-20
+  - name: fedora-21
 
 suites:
  - name: package
