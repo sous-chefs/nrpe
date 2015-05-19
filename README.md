@@ -1,6 +1,10 @@
 nrpe cookbook
 =============
-[![Build Status](https://travis-ci.org/tas50/chef-nrpe.svg?branch=master)](https://travis-ci.org/tas50/chef-nrpe)
+
+[![Join the chat at https://gitter.im/schubergphilis/nrpe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/schubergphilis/nrpe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Join the chat at https://gitter.im/schubergphilis/nrpe](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/schubergphilis/nrpe?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/schubergphilis/nrpe.svg?branch=master)](https://travis-ci.org/schubergphilis/nrpe)
 
 Chef cookbook to install Nagios NRPE client (was previously part of the Nagios cookbook)
 
