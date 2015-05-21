@@ -122,6 +122,9 @@ when 'rhel', 'fedora'
     'nagios-plugins-users' => {
       'version' => nil
     }
+    'nagios-plugins-ping' => {
+      'version' => nil
+    }
   }
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['home']            = '/usr/lib/nagios'
