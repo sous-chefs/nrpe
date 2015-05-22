@@ -121,7 +121,7 @@ when 'rhel', 'fedora'
     },
     'nagios-plugins-users' => {
       'version' => nil
-    }
+    },
     'nagios-plugins-ping' => {
       'version' => nil
     }
@@ -142,6 +142,9 @@ when 'freebsd'
   default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
+      'version' => nil
+    },
+    'nagios-plugins-ping' => {
       'version' => nil
     }
   }
