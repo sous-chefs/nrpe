@@ -145,6 +145,7 @@ when 'freebsd'
   default['nrpe']['log_facility']      = 'daemon'
   default['nrpe']['service_name']      = 'nrpe2'
   default['nrpe']['conf_dir']          = '/usr/local/etc'
+  default['nrpe']['plugin_dir']        = '/usr/local/libexec/nagios'
 else
   default['nrpe']['install_method']    = 'source'
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
