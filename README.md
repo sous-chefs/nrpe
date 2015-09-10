@@ -118,14 +118,14 @@ end
 License & Authors
 -----------------
 - Author:: Joshua Sierles <joshua@37signals.com>
-- Author:: Nathan Haneysmith <nathan@getchef.com>
-- Author:: Joshua Timberman <joshua@getchef.com>
-- Author:: Seth Chisamore <schisamo@getchef.com>
-- Author:: Tim Smith <tsmith84@gmail.com>
+- Author:: Nathan Haneysmith <nathan@chef.io>
+- Author:: Joshua Timberman <joshua@chef.io>
+- Author:: Seth Chisamore <schisamo@chef.iom>
+- Author:: Tim Smith <tsmith@chef.io>
 
 ```text
 Copyright 2009, 37signals
-Copyright 2009-2013, Chef Software, Inc.
+Copyright 2009-2015, Chef Software, Inc.
 Copyright 2012, Webtrends Inc.
 Copyright 2013-2014, Limelight Networks, Inc.
 
