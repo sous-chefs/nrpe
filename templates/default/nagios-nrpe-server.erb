@@ -9,7 +9,7 @@
 # config: <%= node['nrpe']['conf_dir'] %>/nrpe.cfg
 
 ### BEGIN INIT INFO
-# Provides:          nagios-nrpe-server
+# Provides:          <%= node['nrpe']['service_name'] %>
 # Required-Start:    $local_fs $remote_fs $syslog $named $network $time
 # Required-Stop:     $local_fs $remote_fs $syslog $named $network
 # Should-Start:      
