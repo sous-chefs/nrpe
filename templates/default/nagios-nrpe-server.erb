@@ -8,6 +8,18 @@
 # processname: <%= node['nrpe']['service_name'] %>
 # config: <%= node['nrpe']['conf_dir'] %>/nrpe.cfg
 
+### BEGIN INIT INFO
+# Provides:          nagios-nrpe-server
+# Required-Start:    $local_fs $remote_fs $syslog $named $network $time
+# Required-Stop:     $local_fs $remote_fs $syslog $named $network
+# Should-Start:      
+# Should-Stop:       
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: nagios remote plugin executor
+# Description:       nagios-nrpe is a daemon for running checks on remote systems.
+### END INIT INFO
+
 <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>
 # Source function library
 if [ -f /etc/rc.d/init.d/functions ]; then
