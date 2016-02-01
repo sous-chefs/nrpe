@@ -95,6 +95,7 @@ The check LWRP provides an easy way to add and remove NRPE checks from within co
 - `critical_condition` String that you will pass to the command with the -c flag
 - `command` The actual command to execute (including the path). If this is not specified, this will use `#{node['nrpe']['plugin_dir']}/command_name` as the path to the command.
 - `parameters` Any additional parameters you wish to pass to the plugin.
+- `template` Use the specific erb template to render NRPE config command.
 
 #### Examples
 ```ruby
@@ -114,6 +115,13 @@ nrpe_check "check_load" do
 end
 ```
 
+Using template:
+```ruby
+nrpe_check "check_load" do
+  template "check_load.cfg.erb"
+  action :add
+end
+```
 
 License & Authors
 -----------------

@@ -23,25 +23,42 @@ end
 
 action :add do
   Chef::Log.info "Adding #{new_resource.command_name} to #{node['nrpe']['conf_dir']}/nrpe.d/"
-  command = new_resource.command || "#{node['nrpe']['plugin_dir']}/#{new_resource.command_name}"
-  file_contents = "command[#{new_resource.command_name}]=#{command}"
-  file_contents += " -w #{new_resource.warning_condition}" unless new_resource.warning_condition.nil?
-  file_contents += " -c #{new_resource.critical_condition}" unless new_resource.critical_condition.nil?
-  file_contents += " #{new_resource.parameters}" unless new_resource.parameters.nil?
-  f = file "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg" do
-    owner 'root'
-    group node['nrpe']['group']
-    mode '0640'
-    content file_contents
-    notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
+
+  config_file = "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg"
+
+  if new_resource.template
+    if !new_resource.command.nil?
+      fail 'You cannot specify command and template!'
+    end
+    f = template config_file do
+      owner 'root'
+      group node['nrpe']['group']
+      mode '0640'
+      source new_resource.template
+      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
+    end
+  else
+    command = new_resource.command || "#{node['nrpe']['plugin_dir']}/#{new_resource.command_name}"
+    file_contents = "command[#{new_resource.command_name}]=#{command}"
+    file_contents += " -w #{new_resource.warning_condition}" unless new_resource.warning_condition.nil?
+    file_contents += " -c #{new_resource.critical_condition}" unless new_resource.critical_condition.nil?
+    file_contents += " #{new_resource.parameters}" unless new_resource.parameters.nil?
+    f = file config_file do
+      owner 'root'
+      group node['nrpe']['group']
+      mode '0640'
+      content file_contents
+      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
+    end
   end
   new_resource.updated_by_last_action(f.updated_by_last_action?)
 end
 
 action :remove do
-  if ::File.exist?("#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg")
+  config_file = "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg"
+  if ::File.exist?(config_file)
     Chef::Log.info "Removing #{new_resource.command_name} from #{node['nrpe']['conf_dir']}/nrpe.d/"
-    f = file "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg" do
+    f = file config_file do
       action :delete
       notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
     end
