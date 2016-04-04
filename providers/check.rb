@@ -27,7 +27,7 @@ action :add do
   config_file = "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg"
 
   if new_resource.template
-    if !new_resource.command.nil?
+    unless new_resource.command.nil?
       fail 'You cannot specify command and template!'
     end
     f = template config_file do
