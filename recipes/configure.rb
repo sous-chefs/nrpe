@@ -71,10 +71,6 @@ if node['platform_version'].to_i == 7 || node['platform_version'].to_i >= 20
   template "/usr/lib/systemd/system/nrpe.service" do
     source 'nrpe.service.erb'
     mode '0644'
-    variables(
-      :user => node['nrpe']['user'],
-      :group => node['nrpe']['group']
-    )
     notifies :run, 'execute[systemctl_preset_nrpe]', :immediately
     notifies :restart, "service[#{node['nrpe']['service_name']}]"
   end
