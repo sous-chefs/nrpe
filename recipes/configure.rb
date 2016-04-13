@@ -67,6 +67,24 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
 
+if node['platform_version'].to_i == 7 || node['platform_version'].to_i >= 20
+  template "/usr/lib/systemd/system/nrpe.service" do
+    source 'nrpe.service.erb'
+    mode '0644'
+    variables(
+      :user => node['nrpe']['user'],
+      :group => node['nrpe']['group']
+    )
+    notifies :run, 'execute[systemctl_preset_nrpe]', :immediately
+    notifies :restart, "service[#{node['nrpe']['service_name']}]"
+  end
+
+  execute 'systemctl_preset_nrpe' do
+    command '/usr/bin/systemctl preset nrpe.service'
+    action :nothing
+  end
+end
+
 service node['nrpe']['service_name'] do
   action [:start, :enable]
   supports :restart => true, :reload => true, :status => true
