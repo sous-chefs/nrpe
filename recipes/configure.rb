@@ -67,7 +67,7 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
 
-if (platform?('rhel', 'centos') && node['platform_version'].to_i == 7) || (platform?('fedora') && node['platform_version'].to_i >= 20)
+if (platform?('fedora') && node['platform_version'].to_i >= 20) || (platform_family?('rhel') && node['platform_version'].to_i == 7)
   template "/usr/lib/systemd/system/nrpe.service" do
     source 'nrpe.service.erb'
     mode '0644'
