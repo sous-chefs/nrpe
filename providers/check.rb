@@ -28,7 +28,7 @@ action :add do
 
   if new_resource.template
     unless new_resource.command.nil?
-      fail 'You cannot specify command and template!'
+      raise 'You cannot specify command and template!'
     end
     f = template config_file do
       owner 'root'
