@@ -86,16 +86,16 @@ when 'debian'
   }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
-  if node['kernel']['machine'] == 'i686'
-    default['nrpe']['ssl_lib_dir']     = '/usr/lib/i386-linux-gnu'
-  else
-    default['nrpe']['ssl_lib_dir']     = '/usr/lib/x86_64-linux-gnu'
-  end
-  if node['nrpe']['install_method'] == 'package'
-    default['nrpe']['service_name']    = 'nagios-nrpe-server'
-  else
-    default['nrpe']['service_name']    = 'nrpe'
-  end
+  default['nrpe']['ssl_lib_dir']       = if node['kernel']['machine'] == 'i686'
+                                           '/usr/lib/i386-linux-gnu'
+                                         else
+                                           '/usr/lib/x86_64-linux-gnu'
+                                         end
+  default['nrpe']['service_name']      = if node['nrpe']['install_method'] == 'package'
+                                           'nagios-nrpe-server'
+                                         else
+                                           'nrpe'
+                                         end
 when 'rhel', 'fedora'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
   if node['platform_version'].to_i == 7 || node['platform_version'].to_i >= 20
