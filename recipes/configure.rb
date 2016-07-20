@@ -67,6 +67,26 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
 
+execute 'nrpe-reload-systemd' do
+  command '/bin/systemctl daemon-reload'
+  action :nothing
+end
+
+# if we use systemd, make the nrpe.service a template to correct the user
+template '/usr/lib/systemd/system/nrpe.service' do
+  source 'nrpe.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :run, 'execute[nrpe-reload-systemd]', :immediately
+  notifies :restart, "service[#{node['nrpe']['service_name']}]"
+  only_if  { File.exist?('/usr/lib/systemd/system/nrpe.service') }
+  only_if  { node['init_package'] == 'systemd' }
+  variables(
+    :nrpe => node['nrpe']
+  )
+end
+
 service node['nrpe']['service_name'] do
   action [:start, :enable]
   supports :restart => true, :reload => true, :status => true

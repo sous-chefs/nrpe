@@ -1,0 +1,15 @@
+[Unit]
+Description=NRPE
+After=network.target
+Requires=network.target
+
+[Service]
+Type=forking
+User=<%= @nrpe['user'] %>
+Group=<%= @nrpe['group'] %>
+EnvironmentFile=/etc/sysconfig/nrpe
+ExecStart=/usr/sbin/nrpe -c /etc/nagios/nrpe.cfg -d $NRPE_SSL_OPT
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
