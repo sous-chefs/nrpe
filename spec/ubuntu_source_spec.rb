@@ -8,7 +8,7 @@ describe 'source install on ubuntu 14.04' do
   end
 
   before do
-    stub_command("which nrpe").and_return(false)
+    stub_command('which nrpe').and_return(false)
   end
 
   it 'includes the nrpe source recipes' do
@@ -60,10 +60,10 @@ describe 'source install on ubuntu 16.04' do
   end
 
   before do
-    stub_command("which nrpe").and_return(false)
+    stub_command('which nrpe').and_return(false)
   end
 
   it 'templates systemd unit file' do
-    expect(chef_run).to render_file('/usr/lib/systemd/system/nrpe.service').with_content('/usr/sbin/nrpe')
+    expect(chef_run).to render_file('/lib/systemd/system/nrpe.service').with_content('/usr/sbin/nrpe')
   end
 end

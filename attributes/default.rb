@@ -64,6 +64,9 @@ default['nrpe']['check_action'] = 'reload'
 # attribute for storing information about checks on the node
 default['nrpe']['checks'] = []
 
+# different distros store systemd unit files in different locations
+default['nrpe']['systemd_unit_dir'] = '/usr/lib/systemd/system'
+
 # platform specific values
 case node['platform_family']
 when 'debian'
@@ -86,6 +89,7 @@ when 'debian'
   }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
+  default['nrpe']['systemd_unit_dir']  = '/lib/systemd/system'
   default['nrpe']['ssl_lib_dir']       = if node['kernel']['machine'] == 'i686'
                                            '/usr/lib/i386-linux-gnu'
                                          else

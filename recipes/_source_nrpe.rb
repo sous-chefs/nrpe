@@ -34,29 +34,22 @@ if node['init_package'] == 'systemd'
   end
 
   # if we use systemd, make the nrpe.service a template to correct the user
-  template '/usr/lib/systemd/system/nrpe.service' do
+  template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
     source 'nrpe.service.erb'
-    owner 'root'
-    group 'root'
-    mode '0644'
     notifies :run, 'execute[nrpe-reload-systemd]', :immediately
-    notifies :restart, "service[#{node['nrpe']['service_name']}]"
-    only_if  { node['init_package'] == 'systemd' }
+    notifies :restart, 'service[nrpe]'
     variables(
       nrpe: node['nrpe']
     )
   end
 else
-  template "/etc/init.d/#{node['nrpe']['service_name']}" do
+  template '/etc/init.d/nrpe' do
     source 'nagios-nrpe-server.erb'
-    owner 'root'
-    group 'root'
-    mode  '0754'
+    mode '0754'
   end
 end
 
 directory node['nrpe']['conf_dir'] do
-  owner 'root'
   group node['nrpe']['group']
   mode  '0750'
 end
