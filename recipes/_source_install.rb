@@ -37,12 +37,11 @@ pkgs.each do |pkg|
   end
 end
 
+group node['nrpe']['group']
+
 user node['nrpe']['user'] do
   system true
-end
-
-group node['nrpe']['group'] do
-  members [node['nrpe']['user']]
+  group node['nrpe']['group']
 end
 
 # compile both nrpe daemon and the monitoring (aka nagios) plugins
