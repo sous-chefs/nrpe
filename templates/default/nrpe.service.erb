@@ -7,7 +7,9 @@ Requires=network.target
 Type=forking
 User=<%= @nrpe['user'] %>
 Group=<%= @nrpe['group'] %>
+<% if ['rhel', 'fedora'].include?(node['platform_family']) -%>
 EnvironmentFile=/etc/sysconfig/nrpe
+<% end -%>
 ExecStart=/usr/sbin/nrpe -c <%= @nrpe['conf_dir'] %>/nrpe.cfg -d $NRPE_SSL_OPT
 ExecReload=/bin/kill -HUP $MAINPID
 
