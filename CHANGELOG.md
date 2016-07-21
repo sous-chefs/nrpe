@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.5.4
+* Documentation fix for pid_file attribute
+* Make sure that systemd unit file matches the nrpe user attribute
+
 ## 1.5.3
 * Add template support for config files
 * Remove node.set in default recipe (Issue #27)
