@@ -30,7 +30,7 @@ end
 
 describe 'package install on rhel 7.2' do
   cached(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.2.1511')
+    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.1.1503')
     runner.converge 'nrpe::default'
   end
 
