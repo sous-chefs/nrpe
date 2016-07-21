@@ -79,5 +79,5 @@ bash 'compile-nagios-nrpe' do
     make -s
     make install
   EOH
-  creates "#{node['nrpe']['plugin_dir']}/check_nrpe" # perhaps we could replace this with a version check to allow upgrades
+  not_if 'which nrpe'
 end
