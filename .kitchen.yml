@@ -42,6 +42,9 @@ suites:
    attributes:
      nrpe:
        install_method: 'source'
+   excludes:
+    - freebsd-9.3
+    - freebsd-10.2
  - name: check
    run_list:
    - recipe[chef_nrpe_test::default]
