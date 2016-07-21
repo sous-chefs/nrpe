@@ -45,8 +45,8 @@ default['nrpe']['connection_timeout']              = nil
 
 # for plugin from source installation
 default['nrpe']['plugins']['url']      = 'https://www.monitoring-plugins.org/download'
-default['nrpe']['plugins']['version']  = '2.0'
-default['nrpe']['plugins']['checksum'] = 'a91b0f68ff00661e0d69f28e3cf577541af98e0f6d09dd014328f132bde6c3fc'
+default['nrpe']['plugins']['version']  = '2.1.2'
+default['nrpe']['plugins']['checksum'] = '76c6b58f0867ab7b6c8c86c7e94fcce7183618f6daab63488990d0355f5600aa'
 
 # for nrpe from source installation
 default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
@@ -63,6 +63,9 @@ default['nrpe']['check_action'] = 'reload'
 
 # attribute for storing information about checks on the node
 default['nrpe']['checks'] = []
+
+# different distros store systemd unit files in different locations
+default['nrpe']['systemd_unit_dir'] = '/usr/lib/systemd/system'
 
 # platform specific values
 case node['platform_family']
@@ -86,6 +89,7 @@ when 'debian'
   }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
+  default['nrpe']['systemd_unit_dir']  = '/lib/systemd/system'
   default['nrpe']['ssl_lib_dir']       = if node['kernel']['machine'] == 'i686'
                                            '/usr/lib/i386-linux-gnu'
                                          else

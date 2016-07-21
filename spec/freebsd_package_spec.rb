@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe 'package install' do
-  let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.0')
+  cached(:chef_run) do
+    runner = ChefSpec::ServerRunner.new(platform: 'freebsd', version: '10.3')
     runner.converge 'nrpe::default'
   end
 

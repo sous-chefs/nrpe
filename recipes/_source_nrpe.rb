@@ -27,15 +27,29 @@ remote_file "#{Chef::Config[:file_cache_path]}/nrpe-#{node['nrpe']['version']}.t
   action :create_if_missing
 end
 
-template "/etc/init.d/#{node['nrpe']['service_name']}" do
-  source 'nagios-nrpe-server.erb'
-  owner 'root'
-  group 'root'
-  mode  '0754'
+if node['init_package'] == 'systemd'
+  execute 'nrpe-reload-systemd' do
+    command '/bin/systemctl daemon-reload'
+    action :nothing
+  end
+
+  # if we use systemd, make the nrpe.service a template to correct the user
+  template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
+    source 'nrpe.service.erb'
+    notifies :run, 'execute[nrpe-reload-systemd]', :immediately
+    notifies :restart, 'service[nrpe]'
+    variables(
+      nrpe: node['nrpe']
+    )
+  end
+else
+  template '/etc/init.d/nrpe' do
+    source 'nagios-nrpe-server.erb'
+    mode '0754'
+  end
 end
 
 directory node['nrpe']['conf_dir'] do
-  owner 'root'
   group node['nrpe']['group']
   mode  '0750'
 end
@@ -53,10 +67,13 @@ bash 'compile-nagios-nrpe' do
                 --enable-command-args \
                 --with-nagios-user=#{node['nrpe']['user']} \
                 --with-nagios-group=#{node['nrpe']['group']} \
+                --with-nrpe-user=#{node['nrpe']['user']} \
+                --with-nrpe-group=#{node['nrpe']['group']} \
                 --with-ssl=/usr/bin/openssl \
-                --with-ssl-lib=#{node['nrpe']['ssl_lib_dir']}
+                --with-ssl-lib=#{node['nrpe']['ssl_lib_dir']} \
+                --bindir=/usr/sbin/
     make -s
     make install
   EOH
-  creates "#{node['nrpe']['plugin_dir']}/check_nrpe" # perhaps we could replace this with a version check to allow upgrades
+  not_if 'which nrpe'
 end

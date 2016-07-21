@@ -24,10 +24,11 @@
 include_recipe 'build-essential'
 
 pkgs = value_for_platform_family(
-  %w(rhel fedora) => %w(openssl-devel make tar),
-  'debian' => %w(libssl-dev make tar),
+  %w(rhel fedora) => %w(openssl-devel tar which),
+  'debian' => %w(libssl-dev tar),
   'gentoo' => [],
-  'default' => %w(libssl-dev make tar)
+  'default' => %w(libssl-dev tar),
+  'suse' => %w(libopenssl-devel tar which)
 )
 
 # install the necessary prereq packages for compiling NRPE
@@ -37,12 +38,11 @@ pkgs.each do |pkg|
   end
 end
 
+group node['nrpe']['group']
+
 user node['nrpe']['user'] do
   system true
-end
-
-group node['nrpe']['group'] do
-  members [node['nrpe']['user']]
+  group node['nrpe']['group']
 end
 
 # compile both nrpe daemon and the monitoring (aka nagios) plugins

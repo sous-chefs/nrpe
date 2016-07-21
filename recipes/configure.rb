@@ -50,19 +50,16 @@ mon_host.concat node['nrpe']['allowed_hosts'] if node['nrpe']['allowed_hosts']
 include_dir = "#{node['nrpe']['conf_dir']}/nrpe.d"
 
 directory include_dir do
-  owner 'root'
   group node['nrpe']['group']
   mode '0750'
 end
 
 template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   source 'nrpe.cfg.erb'
-  owner 'root'
   group node['nrpe']['group']
-  mode '0640'
   variables(
-    :mon_host => mon_host.uniq.sort,
-    :nrpe_directory => include_dir
+    mon_host: mon_host.uniq.sort,
+    nrpe_directory: include_dir
   )
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
@@ -73,23 +70,20 @@ execute 'nrpe-reload-systemd' do
 end
 
 # if we use systemd, make the nrpe.service a template to correct the user
-template '/usr/lib/systemd/system/nrpe.service' do
+template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
   source 'nrpe.service.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
   notifies :run, 'execute[nrpe-reload-systemd]', :immediately
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
-  only_if  { File.exist?('/usr/lib/systemd/system/nrpe.service') }
+  only_if  { ::File.exist?("#{node['nrpe']['systemd_unit_dir']}/nrpe.service") }
   only_if  { node['init_package'] == 'systemd' }
   variables(
-    :nrpe => node['nrpe']
+    nrpe: node['nrpe']
   )
 end
 
 service node['nrpe']['service_name'] do
   action [:start, :enable]
-  supports :restart => true, :reload => true, :status => true
+  supports restart: true, reload: true, status: true
 end
 
 # The updating of the list of checks.

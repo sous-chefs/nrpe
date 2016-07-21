@@ -5,43 +5,46 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-14.04
-    run_list:
-    - recipe[apt::default]
-  - name: ubuntu-12.04
-    run_list:
-    - recipe[apt::default]
-  - name: ubuntu-10.04
-    run_list:
-    - recipe[apt::default]
-  - name: debian-7.8
-    run_list:
-    - recipe[apt::default]
-  - name: debian-6.0.10
-    run_list:
-    - recipe[apt::default]
+  - name: centos-5.11
+  - name: centos-6.7
+  - name: centos-7.2
+  - name: debian-7.10
+    run_list: apt::default
+  - name: debian-8.4
+    run_list: apt::default
+  - name: fedora-23
+    run_list: yum::dnf_yum_compat
   - name: freebsd-9.3
     run_list:
-    - recipe[freebsd::portsnap]
-  - name: freebsd-10.1
+      - freebsd::portsnap
+      - freebsd::pkgng
+  - name: freebsd-10.2
     run_list:
-    - recipe[freebsd::portsnap]
-  - name: centos-7.1
-  - name: centos-6.6
-  - name: centos-5.11
-  - name: fedora-20
-  - name: fedora-21
+      - freebsd::portsnap
+  - name: opensuse-13.2
+  - name: ubuntu-12.04
+    run_list: apt::default
+  - name: ubuntu-14.04
+    run_list: apt::default
+  - name: ubuntu-16.04
+    run_list: apt::default
+
 
 suites:
  - name: package
    run_list:
    - recipe[nrpe::default]
+   excludes: 
+   - opensuse-13.2
  - name: source
    run_list:
    - recipe[nrpe::default]
    attributes:
      nrpe:
        install_method: 'source'
+   excludes:
+    - freebsd-9.3
+    - freebsd-10.2
  - name: check
    run_list:
    - recipe[chef_nrpe_test::default]
