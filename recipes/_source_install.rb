@@ -24,10 +24,11 @@
 include_recipe 'build-essential'
 
 pkgs = value_for_platform_family(
-  %w(rhel fedora) => %w(openssl-devel make tar),
-  'debian' => %w(libssl-dev make tar),
+  %w(rhel fedora) => %w(openssl-devel tar),
+  'debian' => %w(libssl-dev tar),
   'gentoo' => [],
-  'default' => %w(libssl-dev make tar)
+  'default' => %w(libssl-dev tar),
+  'suse' => %w(libopenssl-devel tar)
 )
 
 # install the necessary prereq packages for compiling NRPE
