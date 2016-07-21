@@ -74,6 +74,8 @@ bash 'compile-nagios-nrpe' do
                 --enable-command-args \
                 --with-nagios-user=#{node['nrpe']['user']} \
                 --with-nagios-group=#{node['nrpe']['group']} \
+                --with-nrpe-user=#{node['nrpe']['user']} \
+                --with-nrpe-group=#{node['nrpe']['group']} \
                 --with-ssl=/usr/bin/openssl \
                 --with-ssl-lib=#{node['nrpe']['ssl_lib_dir']}
     make -s
