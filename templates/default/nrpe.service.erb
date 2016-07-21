@@ -1,0 +1,14 @@
+[Unit]
+Description=NRPE
+After=network.target
+Requires=network.target
+
+[Service]
+Type=forking
+User=<%= node['nrpe']['user'] %>
+Group=<%= node['nrpe']['group'] %>
+EnvironmentFile=/etc/sysconfig/nrpe
+ExecStart=/usr/sbin/nrpe -c <%= node['nrpe']['conf_dir'] %>/nrpe.cfg -d $NRPE_SSL_OPT
+
+[Install]
+WantedBy=multi-user.target

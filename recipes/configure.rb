@@ -67,6 +67,20 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
 
+if (platform?('fedora') && node['platform_version'].to_i >= 20) || (platform_family?('rhel') && node['platform_version'].to_i == 7)
+  template "/usr/lib/systemd/system/nrpe.service" do
+    source 'nrpe.service.erb'
+    mode '0644'
+    notifies :run, 'execute[systemctl_preset_nrpe]', :immediately
+    notifies :restart, "service[#{node['nrpe']['service_name']}]"
+  end
+
+  execute 'systemctl_preset_nrpe' do
+    command '/usr/bin/systemctl preset nrpe.service'
+    action :nothing
+  end
+end
+
 service node['nrpe']['service_name'] do
   action [:start, :enable]
   supports :restart => true, :reload => true, :status => true
