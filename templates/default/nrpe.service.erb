@@ -8,7 +8,7 @@ Type=forking
 User=<%= @nrpe['user'] %>
 Group=<%= @nrpe['group'] %>
 EnvironmentFile=/etc/sysconfig/nrpe
-ExecStart=/usr/sbin/nrpe -c /etc/nagios/nrpe.cfg -d $NRPE_SSL_OPT
+ExecStart=/usr/sbin/nrpe -c <%= @nrpe['conf_dir'] %>/nrpe.cfg -d $NRPE_SSL_OPT
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
