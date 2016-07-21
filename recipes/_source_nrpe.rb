@@ -77,7 +77,8 @@ bash 'compile-nagios-nrpe' do
                 --with-nrpe-user=#{node['nrpe']['user']} \
                 --with-nrpe-group=#{node['nrpe']['group']} \
                 --with-ssl=/usr/bin/openssl \
-                --with-ssl-lib=#{node['nrpe']['ssl_lib_dir']}
+                --with-ssl-lib=#{node['nrpe']['ssl_lib_dir']} \
+                --bindir=/usr/sbin/
     make -s
     make install
   EOH
