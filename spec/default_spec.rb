@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'default installation' do
-  let(:chef_run) do
+  cached(:chef_run) do
     runner = ChefSpec::ServerRunner.new(platform: 'debian', version: '7.10')
     runner.converge 'nrpe::default'
   end
@@ -52,6 +52,13 @@ describe 'default installation' do
 
   it 'expects nrpe config to have server_port' do
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('server_port=5666')
+  end
+end
+
+describe 'default installation with attributes' do
+  let(:chef_run) do
+    runner = ChefSpec::ServerRunner.new(platform: 'debian', version: '7.10')
+    runner.converge 'nrpe::default'
   end
 
   it 'expects nrpe config to have allow_bash_command_substitution when set' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'package install' do
-  let(:chef_run) do
+  cached(:chef_run) do
     runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
     runner.converge 'nrpe::default'
   end
@@ -35,6 +35,13 @@ describe 'package install' do
     expect(chef_run).not_to install_package('nagios-plugins').with(options: '--no-install-recommends')
     expect(chef_run).not_to install_package('nagios-plugins-basic').with(options: '--no-install-recommends')
     expect(chef_run).not_to install_package('nagios-plugins-standard').with(options: '--no-install-recommends')
+  end
+end
+
+describe 'package install with package option set' do
+  cached(:chef_run) do
+    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+    runner.converge 'nrpe::default'
   end
 
   it 'should pass --no-install-recommends as options when installing the packages' do
