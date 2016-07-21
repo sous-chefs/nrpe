@@ -28,18 +28,18 @@ describe 'package install on rhel 6.7' do
   end
 end
 
-describe 'package install on rhel 7' do
-  cached(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.0')
-    runner.converge 'nrpe::default'
-  end
-
-  before do
-    allow(File).to receive(:exist?).and_return(false)
-    allow(File).to receive(:exist?).with('/usr/lib/systemd/system/nrpe.service').and_return(true)
-  end
-
-  it 'templates systemd unit file' do
-    expect(chef_run).to render_file('/usr/lib/systemd/system/nrpe.service').with_content('/usr/sbin/nrpe')
-  end
-end
+# describe 'package install on rhel 7' do
+#   cached(:chef_run) do
+#     runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.0')
+#     runner.converge 'nrpe::default'
+#   end
+#
+#   before do
+#     allow(File).to receive(:exist?).and_return(false)
+#     allow(File).to receive(:exist?).with('/usr/lib/systemd/system/nrpe.service').and_return(true)
+#   end
+#
+#   it 'templates systemd unit file' do
+#     expect(chef_run).to render_file('/usr/lib/systemd/system/nrpe.service').with_content('/usr/sbin/nrpe')
+#   end
+# end
