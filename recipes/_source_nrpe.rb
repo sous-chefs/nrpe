@@ -43,7 +43,7 @@ if node['init_package'] == 'systemd'
     notifies :restart, "service[#{node['nrpe']['service_name']}]"
     only_if  { node['init_package'] == 'systemd' }
     variables(
-      :nrpe => node['nrpe']
+      nrpe: node['nrpe']
     )
   end
 else
