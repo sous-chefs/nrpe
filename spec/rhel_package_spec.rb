@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'package install' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.4')
+    runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '6.7')
     runner.converge 'nrpe::default'
   end
 

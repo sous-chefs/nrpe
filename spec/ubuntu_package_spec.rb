@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'package install' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '12.04')
+    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
     runner.converge 'nrpe::default'
   end
 

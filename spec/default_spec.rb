@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'default installation' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'debian', version: '7.5')
+    runner = ChefSpec::ServerRunner.new(platform: 'debian', version: '7.10')
     runner.converge 'nrpe::default'
   end
 

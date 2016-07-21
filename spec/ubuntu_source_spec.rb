@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'source install' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '12.04')
+    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
     runner.node.set['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end
