@@ -41,7 +41,7 @@ Attributes
 * `node['nrpe']['home']` - home directory of NRPE
 * `node['nrpe']['conf_dir']` - location of the nrpe configuration
 * `node['nrpe']['ssl_lib_dir']` - ssl directory used by NRPE
-* `node['nrpe']['pidfile']` - location to store the NRPE pid file
+* `node['nrpe']['pid_file']` - location to store the NRPE pid file
 * `node['nrpe']['conf_dir']` - location of the nrpe configuration, default /etc/nagios
 * `node['nrpe']['packages']` - nrpe / plugin packages to install. The default attribute for RHEL/Fedora platforms contains a bare minimum set of packages. The full list of available packages is available at: `http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/letter_n.group.html`
 * `node['nrpe']['log_facility']` - log facility for nrpe configuration, default nil (not set)
