@@ -21,12 +21,9 @@
 # limitations under the License.
 #
 
-# nrpe packages are available in EPEL on rhel / fedora platforms
-# fedora 17 and later don't require epel
-if platform_family?('rhel', 'fedora') && node['nrpe']['install_yum-epel']
-  unless platform?('fedora') && node['platform_version'].to_i > 16
-    include_recipe 'yum-epel'
-  end
+# nrpe packages are available in EPEL on rhel
+if platform_family?('rhel') && node['nrpe']['install_yum-epel']
+  include_recipe 'yum-epel'
 end
 
 # install the nrpe packages specified in the ['nrpe']['packages'] attribute
