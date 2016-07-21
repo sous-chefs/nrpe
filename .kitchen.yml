@@ -34,6 +34,8 @@ suites:
  - name: package
    run_list:
    - recipe[nrpe::default]
+   excludes: 
+   - opensuse-13.2
  - name: source
    run_list:
    - recipe[nrpe::default]
