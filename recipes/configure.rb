@@ -61,8 +61,8 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   group node['nrpe']['group']
   mode '0640'
   variables(
-    :mon_host => mon_host.uniq.sort,
-    :nrpe_directory => include_dir
+    mon_host: mon_host.uniq.sort,
+    nrpe_directory: include_dir
   )
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
@@ -83,13 +83,13 @@ template '/usr/lib/systemd/system/nrpe.service' do
   only_if  { File.exist?('/usr/lib/systemd/system/nrpe.service') }
   only_if  { node['init_package'] == 'systemd' }
   variables(
-    :nrpe => node['nrpe']
+    nrpe: node['nrpe']
   )
 end
 
 service node['nrpe']['service_name'] do
   action [:start, :enable]
-  supports :restart => true, :reload => true, :status => true
+  supports restart: true, reload: true, status: true
 end
 
 # The updating of the list of checks.
