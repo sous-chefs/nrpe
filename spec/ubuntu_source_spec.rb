@@ -1,10 +1,14 @@
 require 'spec_helper'
 
-describe 'source install' do
+describe 'source install on ubuntu 14.04' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04')
     runner.node.set['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
+  end
+
+  before do
+    stub_command("which nrpe").and_return(false)
   end
 
   it 'includes the nrpe source recipes' do
@@ -19,7 +23,6 @@ describe 'source install' do
 
   it 'installs the correct packages' do
     expect(chef_run).to install_package('libssl-dev')
-    expect(chef_run).to install_package('make')
     expect(chef_run).to install_package('tar')
   end
 
@@ -46,5 +49,21 @@ describe 'source install' do
 
   it 'starts service called nrpe' do
     expect(chef_run).to start_service('nrpe')
+  end
+end
+
+describe 'source install on ubuntu 16.04' do
+  let(:chef_run) do
+    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+    runner.node.set['nrpe']['install_method'] = 'source'
+    runner.converge 'nrpe::default'
+  end
+
+  before do
+    stub_command("which nrpe").and_return(false)
+  end
+
+  it 'templates systemd unit file' do
+    expect(chef_run).to render_file('/usr/lib/systemd/system/nrpe.service').with_content('/usr/sbin/nrpe')
   end
 end

@@ -80,7 +80,7 @@ template '/usr/lib/systemd/system/nrpe.service' do
   mode '0644'
   notifies :run, 'execute[nrpe-reload-systemd]', :immediately
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
-  only_if  { File.exist?('/usr/lib/systemd/system/nrpe.service') }
+  only_if  { ::File.exist?('/usr/lib/systemd/system/nrpe.service') }
   only_if  { node['init_package'] == 'systemd' }
   variables(
     nrpe: node['nrpe']
