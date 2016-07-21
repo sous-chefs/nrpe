@@ -67,6 +67,26 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
   notifies :restart, "service[#{node['nrpe']['service_name']}]"
 end
 
+execute 'nrpe-reload-systemd' do
+  command '/bin/systemctl daemon-reload'
+  action :nothing
+end
+
+# if we use systemd, make the nrpe.service a template to correct the user
+template '/usr/lib/systemd/system/nrpe.service' do
+  source 'nrpe.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :run, 'execute[nrpe-reload-systemd]', :immediately
+  notifies :restart, "service[#{node['nrpe']['service_name']}]"
+  only_if  { File.exist?('/usr/lib/systemd/system/nrpe.service') }
+  only_if  { node['init_package'] == 'systemd' }
+  variables(
+    :nrpe => node['nrpe']
+  )
+end
+
 service node['nrpe']['service_name'] do
   action [:start, :enable]
   supports :restart => true, :reload => true, :status => true
@@ -76,6 +96,6 @@ end
 ruby_block 'updating of the list of checks' do
   block do
     checks = run_context.resource_collection.select { |r| r.is_a?(Chef::Resource::NrpeCheck) && r.action == [:add] }.map(&:command_name)
-    node.set['nrpe']['checks'] = checks
+    node.default['nrpe']['checks'] = checks
   end
 end

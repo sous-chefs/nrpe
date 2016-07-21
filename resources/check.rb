@@ -33,3 +33,4 @@ attribute :warning_condition, :kind_of => [Integer, String], :default => nil
 attribute :critical_condition, :kind_of => [Integer, String], :default => nil
 attribute :command, :kind_of => String
 attribute :parameters, :kind_of => String, :default => nil
+attribute :template, kind_of: String, default: nil

@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.5.4
+* Documentation fix for pid_file attribute
+* Make sure that systemd unit file matches the nrpe user attribute
+
+## 1.5.3
+* Add template support for config files
+* Remove node.set in default recipe (Issue #27)
+
 ## 1.5.2
 * Fedora 20+ / RHEL 7+ systems now run the daemon as nrpe/nrpe since the user installed by the package changed
 * Fedora 20+ / RHEL 7+ systems now restart on check updates since the systemd scipt doesn't include a reload action

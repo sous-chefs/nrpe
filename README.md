@@ -41,7 +41,7 @@ Attributes
 * `node['nrpe']['home']` - home directory of NRPE
 * `node['nrpe']['conf_dir']` - location of the nrpe configuration
 * `node['nrpe']['ssl_lib_dir']` - ssl directory used by NRPE
-* `node['nrpe']['pidfile']` - location to store the NRPE pid file
+* `node['nrpe']['pid_file']` - location to store the NRPE pid file
 * `node['nrpe']['conf_dir']` - location of the nrpe configuration, default /etc/nagios
 * `node['nrpe']['packages']` - nrpe / plugin packages to install. The default attribute for RHEL/Fedora platforms contains a bare minimum set of packages. The full list of available packages is available at: `http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/letter_n.group.html`
 * `node['nrpe']['log_facility']` - log facility for nrpe configuration, default nil (not set)
@@ -95,6 +95,7 @@ The check LWRP provides an easy way to add and remove NRPE checks from within co
 - `critical_condition` String that you will pass to the command with the -c flag
 - `command` The actual command to execute (including the path). If this is not specified, this will use `#{node['nrpe']['plugin_dir']}/command_name` as the path to the command.
 - `parameters` Any additional parameters you wish to pass to the plugin.
+- `template` Use the specific erb template to render NRPE config command.
 
 #### Examples
 ```ruby
@@ -114,6 +115,13 @@ nrpe_check "check_load" do
 end
 ```
 
+Using template:
+```ruby
+nrpe_check "check_load" do
+  template "check_load.cfg.erb"
+  action :add
+end
+```
 
 License & Authors
 -----------------
