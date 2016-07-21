@@ -17,6 +17,7 @@ Chef 11+
 - Ubuntu 12.04+
 - Red Hat Enterprise Linux (CentOS/Amazon/Scientific/Oracle) 5+
 - Fedora
+- SUSE / openSUSE 13+
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification.
 

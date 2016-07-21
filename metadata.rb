@@ -14,6 +14,6 @@ recipe 'default', 'Installs and configures a nrpe client'
   depends cb
 end
 
-%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd).each do |os|
+%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuse opensuseleap).each do |os|
   supports os
 end
