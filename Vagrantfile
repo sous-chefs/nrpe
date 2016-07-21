@@ -4,15 +4,15 @@ Vagrant.configure('2') do |config|
   config.chef_zero.chef_repo_path = 'test/integration'
 
   unless Vagrant.has_plugin?('vagrant-berkshelf')
-    fail 'Vagrant Berkshelf plugin not installed.  Run: vagrant plugin install vagrant-berkshelf'
+    raise 'Vagrant Berkshelf plugin not installed.  Run: vagrant plugin install vagrant-berkshelf'
   end
 
   unless Vagrant.has_plugin?('vagrant-omnibus')
-    fail 'Vagrant Omnibus plugin not installed.  Run: vagrant plugin install vagrant-omnibus'
+    raise 'Vagrant Omnibus plugin not installed.  Run: vagrant plugin install vagrant-omnibus'
   end
 
   unless Vagrant.has_plugin?('vagrant-chef-zero')
-    fail 'Vagrant Chef Zero plugin not installed.  Run: vagrant plugin install vagrant-chef-zero'
+    raise 'Vagrant Chef Zero plugin not installed.  Run: vagrant plugin install vagrant-chef-zero'
   end
 end
 
