@@ -4,8 +4,6 @@ require 'rubocop/rake_task'
 require 'foodcritic'
 require 'kitchen'
 
-require_relative 'tasks/maintainers'
-
 # Style tests. cookstyle (rubocop) and Foodcritic
 namespace :style do
   desc 'Run Ruby style checks'
