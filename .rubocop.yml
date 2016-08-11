@@ -1,0 +1,8 @@
+AllCops:
+  Include:
+    - Berksfile
+    - Gemfile
+    - Rakefile
+
+Metrics/LineLength:
+  Max: 120
