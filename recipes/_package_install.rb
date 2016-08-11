@@ -30,7 +30,8 @@ end
 #
 # For backward compatibility it can be defined as an array or as a Hash.
 #
-# If it is defined as a hash, by default versions for each packages is nil. So it will install the latest one available in repositories.
+# If it is defined as a hash, by default versions for each packages is nil. So it will install the
+# latest one available in repositories.
 #
 # By default followings are defined and can be adjusted for your tate in your wrapper cookbook
 #   default['nrpe']['packages'] = {
@@ -39,7 +40,8 @@ end
 #     'nagios-plugins-basic'    => {'version' => nil},
 #     'nagios-plugins-standard' => {'version' => nil}
 #   }
-# These version information can be overriden in your environment specific attributes so you can intall any version you prefer
+# These version information can be overriden in your environment specific attributes so you can intall
+# any version you prefer
 #
 # In case of defining as an array, it is as usual. It will install latest version found in repositories
 
