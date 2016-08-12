@@ -33,6 +33,7 @@ action :add do
   rescue Chef::Exceptions::ResourceNotFound
     service node['nrpe']['service_name'] do
       action :nothing
+      supports restart: true, reload: true, status: true
     end
   end
 
@@ -74,6 +75,7 @@ action :remove do
   rescue Chef::Exceptions::ResourceNotFound
     service node['nrpe']['service_name'] do
       action :nothing
+      supports restart: true, reload: true, status: true
     end
   end
 
