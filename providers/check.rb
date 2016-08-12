@@ -45,6 +45,8 @@ action :add do
     file_contents += " -w #{new_resource.warning_condition}" unless new_resource.warning_condition.nil?
     file_contents += " -c #{new_resource.critical_condition}" unless new_resource.critical_condition.nil?
     file_contents += " #{new_resource.parameters}" unless new_resource.parameters.nil?
+    file_contents += "\n"
+
     f = file config_file do
       owner 'root'
       group node['nrpe']['group']
