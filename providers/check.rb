@@ -28,6 +28,14 @@ action :add do
 
   config_file = "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg"
 
+  begin
+    _r = run_context.resource_collection.find("service[#{node['nrpe']['service_name']}]")
+  rescue Chef::Exceptions::ResourceNotFound
+    service node['nrpe']['service_name'] do
+      action :nothing
+    end
+  end
+
   if new_resource.template
     unless new_resource.command.nil?
       raise 'You cannot specify command and template!'
@@ -60,6 +68,15 @@ end
 
 action :remove do
   config_file = "#{node['nrpe']['conf_dir']}/nrpe.d/#{new_resource.command_name}.cfg"
+
+  begin
+    _r = run_context.resource_collection.find("service[#{node['nrpe']['service_name']}]")
+  rescue Chef::Exceptions::ResourceNotFound
+    service node['nrpe']['service_name'] do
+      action :nothing
+    end
+  end
+
   if ::File.exist?(config_file)
     Chef::Log.info "Removing #{new_resource.command_name} from #{node['nrpe']['conf_dir']}/nrpe.d/"
     f = file config_file do
