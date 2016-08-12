@@ -1,6 +1,9 @@
 # CHANGELOG for nrpe
 
 This file is used to list changes made in each version of nrpe
+## 1.6.2 (2016-08-12)
+- Fixing service reload/restart issue
+- Fixing the use_inline_resources error on chef 12 client
 
 ## 1.6.0 (2016-07-21)
 
