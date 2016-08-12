@@ -41,7 +41,7 @@ fi
 . /lib/lsb/init-functions
 
 <% end -%>
-NrpeBin=/usr/bin/nrpe
+NrpeBin=<%= node['nrpe']['bin_dir'] %>/nrpe
 NrpeCfg=<%= node['nrpe']['conf_dir'] %>/nrpe.cfg
 PidFile=<%= node['nrpe']['pid_file'] %>
 
