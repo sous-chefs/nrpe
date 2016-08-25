@@ -71,8 +71,8 @@ bash 'compile-nagios-nrpe' do
                 --with-nrpe-group=#{node['nrpe']['group']} \
                 --with-ssl=/usr/bin/openssl \
                 --with-ssl-lib=#{node['nrpe']['ssl_lib_dir']} \
-                --bindir=/usr/sbin/
-    make -s
+                --bindir=#{node['nrpe']['bin_dir']}/
+    make all
     make install
   EOH
   not_if 'which nrpe'

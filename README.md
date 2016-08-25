@@ -42,10 +42,10 @@ Configures the NRPE client. This will be called internally by the `default` reci
 
 - `node['nrpe']['install_method']` - whether to install from package or source. Default chosen by platform based on known packages available for NRPE: debian/ubuntu 'package', Redhat/CentOS/Fedora/Scientific: source
 - `node['nrpe']['home']` - home directory of NRPE
-- `node['nrpe']['conf_dir']` - location of the nrpe configuration
 - `node['nrpe']['ssl_lib_dir']` - ssl directory used by NRPE
 - `node['nrpe']['pid_file']` - location to store the NRPE pid file
 - `node['nrpe']['conf_dir']` - location of the nrpe configuration, default /etc/nagios
+- `node['nrpe']['bin_dir']` - location of the nrpe binary, default /usr/sbin
 - `node['nrpe']['packages']` - nrpe / plugin packages to install. The default attribute for RHEL/Fedora platforms contains a bare minimum set of packages. The full list of available packages is available at: `http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/letter_n.group.html`
 - `node['nrpe']['log_facility']` - log facility for nrpe configuration, default nil (not set)
 - `node['nrpe']['plugin_dir']` - location where Monitoring plugins (aka Nagios plugins) go, default '/usr/lib/nagios/plugins'.

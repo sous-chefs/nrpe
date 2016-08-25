@@ -1,6 +1,11 @@
 # CHANGELOG for nrpe
 
 This file is used to list changes made in each version of nrpe
+## 1.6.3 (2016-08-12)
+- Updated cookbook to support nrpe 3.0 using source install method
+- Added ability to define node['nrpe']['bin_dir'], default to /usr/sbin
+- Removed duplicate line from README.md for node['nrpe']['conf_dir'] attribute
+
 ## 1.6.2 (2016-08-12)
 - Fixing service reload/restart issue
 - Fixing the use_inline_resources error on chef 12 client
