@@ -37,7 +37,7 @@ if node['init_package'] == 'systemd'
   template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
     source 'nrpe.service.erb'
     notifies :run, 'execute[nrpe-reload-systemd]', :immediately
-    notifies :restart, 'service[nrpe]'
+    notifies :restart, 'service[nrpe]', :delayed
     variables(
       nrpe: node['nrpe']
     )

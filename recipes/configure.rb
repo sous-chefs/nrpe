@@ -61,7 +61,7 @@ template "#{node['nrpe']['conf_dir']}/nrpe.cfg" do
     mon_host: mon_host.uniq.sort,
     nrpe_directory: include_dir
   )
-  notifies :restart, "service[#{node['nrpe']['service_name']}]"
+  notifies :restart, "service[#{node['nrpe']['service_name']}]", :delayed
 end
 
 execute 'nrpe-reload-systemd' do
@@ -73,7 +73,7 @@ end
 template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
   source 'nrpe.service.erb'
   notifies :run, 'execute[nrpe-reload-systemd]', :immediately
-  notifies :restart, "service[#{node['nrpe']['service_name']}]"
+  notifies :restart, "service[#{node['nrpe']['service_name']}]", :delayed
   only_if  { ::File.exist?("#{node['nrpe']['systemd_unit_dir']}/nrpe.service") }
   only_if  { node['init_package'] == 'systemd' }
   variables(
