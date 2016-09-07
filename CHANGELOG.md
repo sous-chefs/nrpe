@@ -1,6 +1,10 @@
 # CHANGELOG for nrpe
 
 This file is used to list changes made in each version of nrpe
+
+## 1.6.4 (2016-09-07)
+- Only restart NRPE at the end of the chef-run 
+
 ## 1.6.3 (2016-08-12)
 - Updated cookbook to support nrpe 3.0 using source install method
 - Added ability to define node['nrpe']['bin_dir'], default to /usr/sbin
