@@ -46,7 +46,7 @@ action :add do
       group node['nrpe']['group']
       mode '0640'
       source new_resource.template
-      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
+      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]", :delayed
     end
   else
     command = new_resource.command || "#{node['nrpe']['plugin_dir']}/#{new_resource.command_name}"
@@ -61,7 +61,7 @@ action :add do
       group node['nrpe']['group']
       mode '0640'
       content file_contents
-      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
+      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]", :delayed
     end
   end
   new_resource.updated_by_last_action(f.updated_by_last_action?)
@@ -83,7 +83,7 @@ action :remove do
     Chef::Log.info "Removing #{new_resource.command_name} from #{node['nrpe']['conf_dir']}/nrpe.d/"
     f = file config_file do
       action :delete
-      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
+      notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]", :delayed
     end
     new_resource.updated_by_last_action(f.updated_by_last_action?)
   end
