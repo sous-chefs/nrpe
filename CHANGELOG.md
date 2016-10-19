@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 1.6.5 (20016-10-19)
+- Include matchers.rb for chefspec
+
 ## 1.6.4 (2016-09-07)
 - Only restart NRPE at the end of the chef-run 
 
