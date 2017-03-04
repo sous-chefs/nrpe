@@ -7,7 +7,7 @@ long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           '1.6.4'
 issues_url       'https://github.com/schubergphilis/nrpe/issues'
 source_url       'https://github.com/schubergphilis/nrpe'
-chef_version     '>= 12.1' if respond_to?(:chef_version)
+chef_version     '>= 12.9' if respond_to?(:chef_version)
 
 recipe 'default', 'Installs and configures a nrpe client'
 %w(build-essential yum-epel).each do |cb|

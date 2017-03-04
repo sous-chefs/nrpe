@@ -8,7 +8,7 @@ Chef cookbook to install Nagios NRPE client (was previously part of the Nagios c
 
 ### Chef
 
-Chef 12.1+
+Chef 12.9+
 
 ### Platform
 
