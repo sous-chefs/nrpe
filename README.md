@@ -8,23 +8,23 @@ Chef cookbook to install Nagios NRPE client (was previously part of the Nagios c
 
 ### Chef
 
-Chef 11+
+Chef 12.1+
 
 ### Platform
 
-- Debian 7+
-- FreeBSD 9+
-- Ubuntu 12.04+
-- Red Hat Enterprise Linux (CentOS/Amazon/Scientific/Oracle) 5+
+- Debian
+- FreeBSD
+- Ubuntu
+- Red Hat Enterprise Linux (CentOS/Amazon/Scientific/Oracle)
 - Fedora
-- SUSE / openSUSE 13+
+- SUSE / openSUSE
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification.
 
 ### Cookbooks
 
 - build-essential
-- yum-epel (note: this requires yum cookbook v3.0, which breaks compatibility with many other cookbooks)
+- yum-epel
 
 ## Recipes
 
@@ -146,7 +146,7 @@ end
 
 ```text
 Copyright 2009, 37signals
-Copyright 2009-2015, Chef Software, Inc.
+Copyright 2009-2017, Chef Software, Inc.
 Copyright 2012, Webtrends Inc.
 Copyright 2013-2014, Limelight Networks, Inc.
 
