@@ -92,7 +92,7 @@ Configures the NRPE client. This will be called internally by the `default` reci
 
 ### check
 
-The check LWRP provides an easy way to add and remove NRPE checks from within cookbooks.
+The check resource provides an easy way to add and remove NRPE checks from within cookbooks.
 
 #### Actions
 
@@ -111,7 +111,7 @@ The check LWRP provides an easy way to add and remove NRPE checks from within co
 #### Examples
 
 ```ruby
-# Use LWRP to define check_load
+# Use resource to define check_load
 nrpe_check "check_load" do
   command "#{node['nrpe']['plugin_dir']}/check_load"
   warning_condition '10'
