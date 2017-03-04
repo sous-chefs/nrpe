@@ -105,12 +105,12 @@ when 'rhel', 'fedora'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
   if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
     default['nrpe']['check_action'] = 'restart'
-    default['nrpe']['user']  = 'nrpe'
-    default['nrpe']['group'] = 'nrpe'
   end
+  default['nrpe']['user']  = 'nrpe'
+  default['nrpe']['group'] = 'nrpe'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['install_yum-epel']  = true
-  default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
+  default['nrpe']['pid_file']          = '/var/run/nrpe/nrpe.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
       'version' => nil,
