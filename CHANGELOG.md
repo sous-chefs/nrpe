@@ -2,15 +2,30 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 2.0.0 (2017-03-03)
+
+- Convert the check LWRP to a custom resource with simplified restart logic. This increases the requirement of Chef to 12.9 or later
+- Add support for package installs on openSUSE Leap
+- Update RHEL platforms to use the nrpe user and pid file defined in the package
+- Remove logic which built node['nrpe']['checks'] as it broke on modern Chef clients
+- Added Chefspec matchers for the check resource
+- Use multi-package installs to speed up package installs
+- Simplify the Fedora check in the attributes file
+- Rework test kitchen testing and test the check resource in Travis
+- Switch from testing in Rake to Delivery local mode
+
 ## 1.6.4 (2016-09-07)
-- Only restart NRPE at the end of the chef-run 
+
+- Only restart NRPE at the end of the chef-run
 
 ## 1.6.3 (2016-08-12)
+
 - Updated cookbook to support nrpe 3.0 using source install method
 - Added ability to define node['nrpe']['bin_dir'], default to /usr/sbin
 - Removed duplicate line from README.md for node['nrpe']['conf_dir'] attribute
 
 ## 1.6.2 (2016-08-12)
+
 - Fixing service reload/restart issue
 - Fixing the use_inline_resources error on chef 12 client
 

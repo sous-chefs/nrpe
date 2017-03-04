@@ -4,7 +4,7 @@ maintainer_email  'tsmith@chef.io'
 license           'Apache 2.0'
 description       'Installs and configures Nagios NRPE client'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           '1.6.4'
+version           '2.0.0'
 issues_url       'https://github.com/schubergphilis/nrpe/issues'
 source_url       'https://github.com/schubergphilis/nrpe'
 chef_version     '>= 12.9' if respond_to?(:chef_version)
