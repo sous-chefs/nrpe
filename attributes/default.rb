@@ -103,7 +103,7 @@ when 'debian'
                                          end
 when 'rhel', 'fedora'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
-  if node['platform_version'].to_i == 7 || node['platform_version'].to_i >= 20
+  if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
     default['nrpe']['check_action'] = 'restart'
     default['nrpe']['user']  = 'nrpe'
     default['nrpe']['group'] = 'nrpe'
@@ -153,6 +153,10 @@ when 'freebsd'
   default['nrpe']['conf_dir']          = '/usr/local/etc'
   default['nrpe']['bin_dir']           = '/usr/sbin'
   default['nrpe']['plugin_dir']        = '/usr/local/libexec/nagios'
+when 'suse'
+  if node['platform'] == 'opensuseleap'
+    default['nrpe']['install_method']    = 'package'
+  end
 else
   default['nrpe']['install_method']    = 'source'
   default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
