@@ -153,17 +153,33 @@ when 'freebsd'
   default['nrpe']['conf_dir']          = '/usr/local/etc'
   default['nrpe']['bin_dir']           = '/usr/sbin'
   default['nrpe']['plugin_dir']        = '/usr/local/libexec/nagios'
-when 'suse'
+else
+  # suse enterprise doesn't have a package, but modern opensuse does
   if node['platform'] == 'opensuseleap'
     default['nrpe']['install_method']    = 'package'
+    default['nrpe']['pid_file']          = '/run/nrpe/nrpe.pid'
+    default['nrpe']['home']              = '/usr/lib/nagios'
+    default['nrpe']['ssl_lib_dir']       = '/usr/lib'
+    default['nrpe']['service_name']      = 'nrpe'
+    default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
+    default['nrpe']['conf_dir']          = '/etc'
+    default['nrpe']['bin_dir']           = '/usr/sbin'
+    default['nrpe']['packages']          = {
+      'nrpe' => {
+        'version' => nil,
+      },
+      'monitoring-plugins-nrpe' => {
+        'version' => nil,
+      },
+    }
+  else
+    default['nrpe']['install_method']    = 'source'
+    default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
+    default['nrpe']['home']              = '/usr/lib/nagios'
+    default['nrpe']['ssl_lib_dir']       = '/usr/lib'
+    default['nrpe']['service_name']      = 'nrpe'
+    default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
+    default['nrpe']['conf_dir']          = '/etc/nagios'
+    default['nrpe']['bin_dir']           = '/usr/sbin'
   end
-else
-  default['nrpe']['install_method']    = 'source'
-  default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
-  default['nrpe']['home']              = '/usr/lib/nagios'
-  default['nrpe']['ssl_lib_dir']       = '/usr/lib'
-  default['nrpe']['service_name']      = 'nrpe'
-  default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
-  default['nrpe']['conf_dir']          = '/etc/nagios'
-  default['nrpe']['bin_dir']           = '/usr/sbin'
 end
