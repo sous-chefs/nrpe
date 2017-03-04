@@ -46,10 +46,8 @@ end
 # In case of defining as an array, it is as usual. It will install latest version found in repositories
 
 if node['nrpe']['packages'].is_a?(Array)
-  node['nrpe']['packages'].each do |pkg|
-    package pkg do
-      options node['nrpe']['package']['options'] unless node['nrpe']['package']['options'].nil?
-    end
+  package node['nrpe']['packages'] do
+    options node['nrpe']['package']['options'] unless node['nrpe']['package']['options'].nil?
   end
 else
   node['nrpe']['packages'].each do |pkg, pkg_details|

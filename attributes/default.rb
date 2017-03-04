@@ -75,17 +75,17 @@ when 'debian'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['packages']          = {
     'nagios-nrpe-server' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins-basic' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins-standard' => {
-      'version' => nil
-    }
+      'version' => nil,
+    },
   }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
@@ -103,30 +103,30 @@ when 'debian'
                                          end
 when 'rhel', 'fedora'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
-  if node['platform_version'].to_i == 7 || node['platform_version'].to_i >= 20
+  if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
     default['nrpe']['check_action'] = 'restart'
-    default['nrpe']['user']  = 'nrpe'
-    default['nrpe']['group'] = 'nrpe'
   end
+  default['nrpe']['user']  = 'nrpe'
+  default['nrpe']['group'] = 'nrpe'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['install_yum-epel']  = true
-  default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
+  default['nrpe']['pid_file']          = '/var/run/nrpe/nrpe.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins-disk' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins-load' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins-procs' => {
-      'version' => nil
+      'version' => nil,
     },
     'nagios-plugins-users' => {
-      'version' => nil
-    }
+      'version' => nil,
+    },
   }
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['home']            = '/usr/lib/nagios'
@@ -145,8 +145,8 @@ when 'freebsd'
   default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
-      'version' => nil
-    }
+      'version' => nil,
+    },
   }
   default['nrpe']['log_facility']      = 'daemon'
   default['nrpe']['service_name']      = 'nrpe2'
@@ -154,12 +154,32 @@ when 'freebsd'
   default['nrpe']['bin_dir']           = '/usr/sbin'
   default['nrpe']['plugin_dir']        = '/usr/local/libexec/nagios'
 else
-  default['nrpe']['install_method']    = 'source'
-  default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
-  default['nrpe']['home']              = '/usr/lib/nagios'
-  default['nrpe']['ssl_lib_dir']       = '/usr/lib'
-  default['nrpe']['service_name']      = 'nrpe'
-  default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
-  default['nrpe']['conf_dir']          = '/etc/nagios'
-  default['nrpe']['bin_dir']           = '/usr/sbin'
+  # suse enterprise doesn't have a package, but modern opensuse does
+  if node['platform'] == 'opensuseleap'
+    default['nrpe']['install_method']    = 'package'
+    default['nrpe']['pid_file']          = '/run/nrpe/nrpe.pid'
+    default['nrpe']['home']              = '/usr/lib/nagios'
+    default['nrpe']['ssl_lib_dir']       = '/usr/lib'
+    default['nrpe']['service_name']      = 'nrpe'
+    default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
+    default['nrpe']['conf_dir']          = '/etc'
+    default['nrpe']['bin_dir']           = '/usr/sbin'
+    default['nrpe']['packages']          = {
+      'nrpe' => {
+        'version' => nil,
+      },
+      'monitoring-plugins-nrpe' => {
+        'version' => nil,
+      },
+    }
+  else
+    default['nrpe']['install_method']    = 'source'
+    default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
+    default['nrpe']['home']              = '/usr/lib/nagios'
+    default['nrpe']['ssl_lib_dir']       = '/usr/lib'
+    default['nrpe']['service_name']      = 'nrpe'
+    default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
+    default['nrpe']['conf_dir']          = '/etc/nagios'
+    default['nrpe']['bin_dir']           = '/usr/sbin'
+  end
 end
