@@ -19,14 +19,14 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=package-centos-6
-  - INSTANCE=package-centos-7
-  - INSTANCE=package-debian-7
-  - INSTANCE=package-debian-8
-  - INSTANCE=package-fedora-latest
-  - INSTANCE=package-opensuse-leap
-  - INSTANCE=package-ubuntu-1404
-  - INSTANCE=package-ubuntu-1604
+  - INSTANCE=check-centos-6
+  - INSTANCE=check-centos-7
+  - INSTANCE=check-debian-7
+  - INSTANCE=check-debian-8
+  - INSTANCE=check-fedora-latest
+  - INSTANCE=check-opensuse-leap
+  - INSTANCE=check-ubuntu-1404
+  - INSTANCE=check-ubuntu-1604
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )

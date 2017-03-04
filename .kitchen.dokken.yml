@@ -79,13 +79,13 @@ platforms:
 suites:
  - name: package
    run_list:
-   - recipe[nrpe::default]
+   - recipe[chef_nrpe_test::default]
  - name: source
    run_list:
-   - recipe[nrpe::default]
+   - recipe[chef_nrpe_test::default]
    attributes:
      nrpe:
        install_method: 'source'
  - name: check
    run_list:
-   - recipe[chef_nrpe_test::default]
+   - recipe[chef_nrpe_test::check]
