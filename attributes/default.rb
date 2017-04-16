@@ -49,8 +49,9 @@ default['nrpe']['plugins']['version']  = '2.1.2'
 default['nrpe']['plugins']['checksum'] = '76c6b58f0867ab7b6c8c86c7e94fcce7183618f6daab63488990d0355f5600aa'
 
 # for nrpe from source installation
-default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
-default['nrpe']['version']  = '2.15'
+default['nrpe']['url']      = 'http://liquidtelecom.dl.sourceforge.net/project/nagios'
+default['nrpe']['major_version']  = '2'
+default['nrpe']['minor_version']  = '15'
 default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072'
 
 # authorization options

@@ -21,8 +21,8 @@
 # limitations under the License.
 #
 
-remote_file "#{Chef::Config[:file_cache_path]}/nrpe-#{node['nrpe']['version']}.tar.gz" do
-  source "#{node['nrpe']['url']}/nrpe-#{node['nrpe']['version']}.tar.gz"
+remote_file "#{Chef::Config[:file_cache_path]}/nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}.tar.gz" do
+  source "#{node['nrpe']['url']}/nrpe-#{node['nrpe']['major_version']}.x/nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}/nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}.tar.gz"
   checksum node['nrpe']['checksum']
   action :create_if_missing
 end
@@ -57,8 +57,8 @@ end
 bash 'compile-nagios-nrpe' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-    tar zxvf nrpe-#{node['nrpe']['version']}.tar.gz
-    cd nrpe-#{node['nrpe']['version']}
+    tar zxvf nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}.tar.gz
+    cd nrpe-#{node['nrpe']['major_version']}.#{node['nrpe']['minor_version']}
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --localstatedir=/var \
