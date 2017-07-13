@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 2.0.1 (2017-07-13)
+
+- Allow option to disable PID file as it's not needed by systemd and causes issues with SELinux at this time
+
 ## 2.0.0 (2017-03-03)
 
 - Convert the check LWRP to a custom resource with simplified restart logic. This increases the requirement of Chef to 12.9 or later
