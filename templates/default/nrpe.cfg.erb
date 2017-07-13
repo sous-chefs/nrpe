@@ -3,7 +3,7 @@
 <%= "log_facility=#{node['nrpe']['log_facility']}" unless node['nrpe']['log_facility'].nil? %>
 <%= "allow_bash_command_substitution=#{node['nrpe']['allow_bash_command_substitution']}" unless node['nrpe']['allow_bash_command_substitution'].nil? %>
 <%= "command_prefix=#{node['nrpe']['command_prefix']}" unless node['nrpe']['command_prefix'].nil? %>
-<%= "pid_file=#{node['nrpe']['pid_file']} unless node['nrpe']['pid_file'].nil? %>
+<%= "pid_file=#{node['nrpe']['pid_file']}" unless node['nrpe']['pid_file'].nil? %>
 server_port=<%= node['nrpe']['server_port'] %>
 <%= "server_address=#{node['nrpe']['server_address']}" unless node['nrpe']['server_address'].nil? %>
 nrpe_user=<%= node['nrpe']['user'] %>
