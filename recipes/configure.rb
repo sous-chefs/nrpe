@@ -25,7 +25,7 @@
 #
 
 # determine hosts that NRPE will allow monitoring from. Start with localhost
-mon_host = ['127.0.0.1']
+mon_host = ['127.0.0.1', '::1']
 
 # search for nagios servers and add them to the mon_host array as well
 if node['nrpe']['multi_environment_monitoring']
