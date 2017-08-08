@@ -39,7 +39,7 @@ describe 'default installation' do
   end
 
   it 'expects nrpe config to allow localhost polling' do
-    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('allowed_hosts=127.0.0.1')
+    expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('allowed_hosts=127.0.0.1,::1')
   end
 
   it 'expects nrpe config to have dont_blame_nrpe' do
