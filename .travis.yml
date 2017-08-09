@@ -19,7 +19,6 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=check-amazonlinux
   - INSTANCE=check-centos-6
   - INSTANCE=check-centos-7
   - INSTANCE=check-debian-7
