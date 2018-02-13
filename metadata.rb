@@ -10,10 +10,10 @@ source_url       'https://github.com/sous-chefs/nrpe'
 chef_version     '>= 12.9' if respond_to?(:chef_version)
 
 recipe 'default', 'Installs and configures a nrpe client'
-%w(build-essential yum-epel).each do |cb|
+%w[build-essential yum-epel].each do |cb|
   depends cb
 end
 
-%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuse opensuseleap).each do |os|
+%w[debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuse opensuseleap].each do |os|
   supports os
 end

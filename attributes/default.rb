@@ -75,17 +75,17 @@ when 'debian'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['packages']          = {
     'nagios-nrpe-server' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins-basic' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins-standard' => {
-      'version' => nil,
-    },
+      'version' => nil
+    }
   }
   default['nrpe']['plugin_dir']        = '/usr/lib/nagios/plugins'
   default['nrpe']['conf_dir']          = '/etc/nagios'
@@ -113,20 +113,20 @@ when 'rhel', 'fedora'
   default['nrpe']['pid_file']          = '/var/run/nrpe/nrpe.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins-disk' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins-load' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins-procs' => {
-      'version' => nil,
+      'version' => nil
     },
     'nagios-plugins-users' => {
-      'version' => nil,
-    },
+      'version' => nil
+    }
   }
   if node['kernel']['machine'] == 'i686'
     default['nrpe']['home']            = '/usr/lib/nagios'
@@ -145,8 +145,8 @@ when 'freebsd'
   default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
-      'version' => nil,
-    },
+      'version' => nil
+    }
   }
   default['nrpe']['log_facility']      = 'daemon'
   default['nrpe']['service_name']      = 'nrpe2'
@@ -166,11 +166,11 @@ else
     default['nrpe']['bin_dir']           = '/usr/sbin'
     default['nrpe']['packages']          = {
       'nrpe' => {
-        'version' => nil,
+        'version' => nil
       },
       'monitoring-plugins-nrpe' => {
-        'version' => nil,
-      },
+        'version' => nil
+      }
     }
   else
     default['nrpe']['install_method']    = 'source'
