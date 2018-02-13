@@ -22,9 +22,7 @@
 #
 
 # nrpe packages are available in EPEL on rhel
-if platform_family?('rhel') && node['nrpe']['install_yum-epel']
-  include_recipe 'yum-epel'
-end
+include_recipe 'yum-epel' if platform_family?('rhel') && node['nrpe']['install_yum-epel']
 
 # install the nrpe packages specified in the ['nrpe']['packages'] attribute
 #

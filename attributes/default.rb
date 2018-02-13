@@ -103,9 +103,7 @@ when 'debian'
                                          end
 when 'rhel', 'fedora'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
-  if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
-    default['nrpe']['check_action'] = 'restart'
-  end
+  default['nrpe']['check_action'] = 'restart' if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
   default['nrpe']['user']  = 'nrpe'
   default['nrpe']['group'] = 'nrpe'
   default['nrpe']['install_method']    = 'package'

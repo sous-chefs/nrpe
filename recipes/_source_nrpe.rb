@@ -56,7 +56,7 @@ end
 
 bash 'compile-nagios-nrpe' do
   cwd Chef::Config[:file_cache_path]
-  code <<-EOH
+  code <<-BASH
     tar zxvf nrpe-#{node['nrpe']['version']}.tar.gz
     cd nrpe-#{node['nrpe']['version']}
     ./configure --prefix=/usr \
@@ -74,6 +74,6 @@ bash 'compile-nagios-nrpe' do
                 --bindir=#{node['nrpe']['bin_dir']}/
     make all
     make install
-  EOH
+  BASH
   not_if 'which nrpe'
 end

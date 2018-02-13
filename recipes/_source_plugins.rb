@@ -31,7 +31,7 @@ end
 
 bash 'compile-monitoring-plugins' do
   cwd Chef::Config[:file_cache_path]
-  code <<-EOH
+  code <<-BASH
     tar zxvf monitoring-plugins-#{plugins_version}.tar.gz
     cd monitoring-plugins-#{plugins_version}
     ./configure --with-nagios-user=#{node['nrpe']['user']} \
@@ -40,6 +40,6 @@ bash 'compile-monitoring-plugins' do
                 --libexecdir=#{node['nrpe']['plugin_dir']}
     make -s
     make install
-  EOH
+  BASH
   creates "#{node['nrpe']['plugin_dir']}/check_users"
 end
