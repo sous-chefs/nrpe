@@ -82,6 +82,6 @@ template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
 end
 
 service node['nrpe']['service_name'] do
-  action %i(start enable)
+  action [:start, :enable]
   supports restart: true, reload: true, status: true
 end
