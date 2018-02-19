@@ -64,6 +64,6 @@ describe 'source install on ubuntu 16.04' do
   end
 
   it 'templates systemd unit file' do
-    expect(chef_run).to render_file('/lib/systemd/system/nrpe.service').with_content('/usr/sbin/nrpe')
+    expect(chef_run).to create_template('/lib/systemd/system/nrpe.service')
   end
 end
