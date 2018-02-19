@@ -49,6 +49,7 @@ case "$1" in
 start)
   # Start daemon.
   echo -n "Starting <%= node['nrpe']['service_name'] %>: "
+  install -o <%= node['nrpe']['user'] %> -g <%= node['nrpe']['group'] %> -d `dirname $PidFile`
   <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>daemon $NrpeBin -c $NrpeCfg -d<% else -%>start-stop-daemon --start --quiet --exec $NrpeBin -- -c $NrpeCfg -d<% end -%>
   echo
   ;;
