@@ -45,7 +45,7 @@ if node.run_list.roles.include?(node['nrpe']['server_role'])
 end
 
 # add any extra nagios servers defined via the 'allowed_hosts attribute'
-mon_host.concat node['nrpe']['allowed_hosts'] if node['nrpe']['allowed_hosts']
+mon_host.concat node['nrpe']['allowed_hosts'].to_a if node['nrpe']['allowed_hosts']
 
 include_dir = "#{node['nrpe']['conf_dir']}/nrpe.d"
 
