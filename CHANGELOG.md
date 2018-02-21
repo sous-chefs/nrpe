@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## 2.0.3 (2018-02-18)
+
+- Allow IPv6 localhost ::1
+
 ## 2.0.2 (2017-07-13)
 
 - Fix broken template
