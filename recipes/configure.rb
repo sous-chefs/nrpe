@@ -32,7 +32,7 @@ if node['nrpe']['multi_environment_monitoring']
   search(:node, "roles:#{node['nrpe']['server_role']}") do |n|
     mon_host << n['ipaddress']
   end
-elsif (!Chef::Config[:solo] && !node['nrpe']['disable_search'])|| node['nrpe']['using_solo_search']
+elsif (!Chef::Config[:solo] && !node['nrpe']['disable_search']) || node['nrpe']['using_solo_search']
   search(:node, "roles:#{node['nrpe']['server_role']} AND chef_environment:#{node.chef_environment}") do |n|
     mon_host << n['ipaddress']
   end
