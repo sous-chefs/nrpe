@@ -57,6 +57,7 @@ default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f
 default['nrpe']['server_role'] = 'monitoring'
 default['nrpe']['allowed_hosts'] = nil
 default['nrpe']['using_solo_search'] = false
+default['nrpe']['disable_search'] = false
 default['nrpe']['multi_environment_monitoring'] = false
 # this is mostly true except for centos-70
 default['nrpe']['check_action'] = 'reload'
