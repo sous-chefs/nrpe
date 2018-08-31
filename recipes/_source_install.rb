@@ -21,7 +21,9 @@
 #
 
 # make sure gcc and make are installed
-include_recipe 'build-essential'
+build_essential do
+  action :install
+end
 
 pkgs = value_for_platform_family(
   %w(rhel fedora) => %w(openssl-devel tar which),
