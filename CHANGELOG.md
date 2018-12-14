@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of nrpe
 
-## Unreleased
+## 2.0.5 (2018-12-14)
 
 - Backport systemd unit from the package install to the cookbook
 
