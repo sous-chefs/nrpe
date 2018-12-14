@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
+- Allow Windows users to use the `nrpe_check` resource
+
 ## 2.0.3 (2018-02-18)
 
 - Allow IPv6 localhost ::1
