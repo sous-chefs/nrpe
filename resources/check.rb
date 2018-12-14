@@ -34,9 +34,9 @@ action :add do
     raise 'You cannot specify command and template!' if new_resource.command
 
     template config_file do
-      owner 'root'
-      group node['nrpe']['group']
-      mode '0640'
+      owner 'root' unless platform?('windows')
+      group node['nrpe']['group'] unless platform?('windows')
+      mode '0640' unless platform?('windows')
       source new_resource.template
       notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
     end
@@ -49,9 +49,9 @@ action :add do
     file_contents += "\n"
 
     file config_file do
-      owner 'root'
-      group node['nrpe']['group']
-      mode '0640'
+      owner 'root' unless platform?('windows')
+      group node['nrpe']['group'] unless platform?('windows')
+      mode '0640' unless platform?('windows')
       content file_contents
       notifies node['nrpe']['check_action'], "service[#{node['nrpe']['service_name']}]"
     end
