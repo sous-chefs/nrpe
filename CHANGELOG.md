@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of nrpe
 
-## Unreleased
+## 2.0.4 (2018-12-14)
 
 - Allow Windows users to use the `nrpe_check` resource
 
