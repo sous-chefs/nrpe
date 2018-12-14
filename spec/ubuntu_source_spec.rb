@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'source install on ubuntu 14.04' do
   cached(:chef_run) do
     runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04')
-    runner.node.set['nrpe']['install_method'] = 'source'
+    runner.node.normal['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end
 
@@ -17,8 +17,8 @@ describe 'source install on ubuntu 14.04' do
     expect(chef_run).to include_recipe('nrpe::_source_plugins')
   end
 
-  it 'includes the build-essential recipe' do
-    expect(chef_run).to include_recipe('build-essential')
+  it 'includes the build-essential resource' do
+    expect(chef_run).to install_build_essential('')
   end
 
   it 'installs the correct packages' do
@@ -55,7 +55,7 @@ end
 describe 'source install on ubuntu 16.04' do
   cached(:chef_run) do
     runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
-    runner.node.set['nrpe']['install_method'] = 'source'
+    runner.node.normal['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end
 
