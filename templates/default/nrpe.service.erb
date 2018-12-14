@@ -1,17 +1,21 @@
 [Unit]
-Description=NRPE
-After=network.target
-Requires=network.target
+Description=Nagios Remote Program Executor
+Documentation=http://www.nagios.org/documentation
+Conflicts=nrpe.socket
+Requires=network-online.target
+After=var-run.mount nss-lookup.target network.target local-fs.target time-sync.target
+Before=getty@tty1.service xdm.service
+
+[Install]
+WantedBy=multi-user.target
 
 [Service]
-Type=forking
+Type=simple
 User=<%= @nrpe['user'] %>
 Group=<%= @nrpe['group'] %>
 <% if ['rhel', 'fedora'].include?(node['platform_family']) && ::File.exist?('/etc/sysconfig/nrpe') -%>
 EnvironmentFile=/etc/sysconfig/nrpe
 <% end -%>
-ExecStart=/usr/sbin/nrpe -c <%= @nrpe['conf_dir'] %>/nrpe.cfg -d $NRPE_SSL_OPT
+ExecStart=/usr/sbin/nrpe -c <%= @nrpe['conf_dir'] %>/nrpe.cfg -f $NRPE_SSL_OPT
 ExecReload=/bin/kill -HUP $MAINPID
-
-[Install]
-WantedBy=multi-user.target
+ExecStopPost=/bin/rm -f <%= @nrpe['pid_file'] %>
