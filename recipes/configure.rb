@@ -3,13 +3,13 @@
 # Author:: Joshua Timberman <joshua@getchef.com>
 # Author:: Nathan Haneysmith <nathan@getchef.com>
 # Author:: Seth Chisamore <schisamo@getchef.com>
-# Cookbook Name:: nrpe
+# Cookbook:: nrpe
 # Recipe:: default
 #
-# Copyright 2009, 37signals
-# Copyright 2009-2013, Chef Software, Inc.
-# Copyright 2012, Webtrends, Inc.
-# Copyright 2013-2014, Limelight Networks, Inc.
+# Copyright:: 2009, 37signals
+# Copyright:: 2009-2013, Chef Software, Inc.
+# Copyright:: 2012, Webtrends, Inc.
+# Copyright:: 2013-2014, Limelight Networks, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
