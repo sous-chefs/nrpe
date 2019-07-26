@@ -1,13 +1,13 @@
 #
-# Cookbook Name:: monitoring
+# Cookbook:: monitoring
 # Recipe:: base_monitoring
 #
-# Copyright 2013, Example Company, Inc.
+# Copyright:: 2013, Example Company, Inc.
 #
 # This recipe defines the necessary NRPE commands for base system monitoring
 # in Example Company Inc's Chef environment.
 
-# Check for high load.  This check defines warning levels and attributes
+# Check for high load. This check defines warning levels and attributes
 nagios_nrpecheck 'check_load' do
   command "#{node['nagios']['plugin_dir']}/check_load"
   warning_condition '6'
@@ -24,7 +24,7 @@ nagios_nrpecheck 'check_all_disks' do
   action :add
 end
 
-# Check for excessive users.  This command relies on the service definition to
+# Check for excessive users. This command relies on the service definition to
 # define what the warning/critical levels and attributes are
 nagios_nrpecheck 'check_users' do
   command "#{node['nagios']['plugin_dir']}/check_users"
