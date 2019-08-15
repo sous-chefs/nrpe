@@ -99,18 +99,18 @@ This file is used to list changes made in each version of nrpe
 
   For backward compatibiility, it will also install packages if it is defined as an array in your env specific cookbook.
 
-# 1.4.12
+## 1.4.12
 
 - Added default['nrpe']['checks'] to store all checks as a node attribute
 - Removed Ruby 1.9.3 and added Ruby 2.2.0 to Travis
 - Make the yum-epel recipe optional with default['nrpe']['install_yum-epel']
 
-# 1.4.10
+## 1.4.10
 
 - Add support for CentOS / RHEL
 - Update the LWRP to use the default action functionality introduced in Chef 0.10.10
 
-# 1.4.8
+## 1.4.8
 
 - Rubocop fixes
 - Remove .DS_Store files in the supermarket file that caused failures on older versions of Berkshelf
@@ -183,6 +183,6 @@ This file is used to list changes made in each version of nrpe
 - Nagios plugin_dir for Debian/Ubuntu was incorrect. Should always be /usr/lib/nagios/plugins regardless of CPU arch
 - Update readme to remove several references to the old Nagios cookbook
 
-## 1.0.0:
+## 1.0.0
 
 - Initial release of the cookbook with client functionality split from the existing nagios cookbook
