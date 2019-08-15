@@ -16,11 +16,6 @@ verifier:
   name: inspec
 
 platforms:
-  - name: amazonlinux
-    driver:
-      image: dokken/amazonlinux
-      pid_one_command: /sbin/init
-
   - name: debian-9
     driver:
       image: dokken/debian-9
