@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'package install' do
   cached(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'debian', version: '7.11')
+    runner = ChefSpec::SoloRunner.new(platform: 'debian', version: '9')
     runner.converge 'nrpe::default'
   end
 
