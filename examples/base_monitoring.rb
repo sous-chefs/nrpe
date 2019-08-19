@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: monitoring
+# Cookbook:: monitoring
 # Recipe:: base_monitoring
 #
-# Copyright 2013, Example Company, Inc.
+# Copyright:: 2013, Example Company, Inc.
 #
 # This recipe defines the necessary NRPE commands for base system monitoring
 # in Example Company Inc's Chef environment.

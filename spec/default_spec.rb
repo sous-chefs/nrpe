@@ -62,14 +62,14 @@ describe 'default installation with attributes' do
   end
 
   it 'expects nrpe config to have allow_bash_command_substitution when set' do
-    chef_run.node.set['nrpe']['allow_bash_command_substitution'] = 0
+    node.normal['nrpe']['allow_bash_command_substitution'] = 0
     chef_run.converge('nrpe::default')
 
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('allow_bash_command_substitution=0')
   end
 
   it 'expects nrpe config to have connection_timeout when set' do
-    chef_run.node.set['nrpe']['connection_timeout'] = 20
+    node.normal['nrpe']['connection_timeout'] = 20
     chef_run.converge('nrpe::default')
 
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('connection_timeout=20')

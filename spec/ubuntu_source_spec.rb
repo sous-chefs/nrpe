@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'source install on ubuntu 14.04' do
   cached(:chef_run) do
     runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04')
-    runner.node.set['nrpe']['install_method'] = 'source'
+    node.normal['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end
 
@@ -55,7 +55,7 @@ end
 describe 'source install on ubuntu 16.04' do
   cached(:chef_run) do
     runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
-    runner.node.set['nrpe']['install_method'] = 'source'
+    node.normal['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end
 
