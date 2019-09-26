@@ -75,5 +75,5 @@ bash 'compile-nagios-nrpe' do
     make all
     make install
   EOH
-  not_if 'which nrpe'
+  not_if "nrpe --version | grep #{node['nrpe']['version']}"
 end
