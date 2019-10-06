@@ -5,6 +5,7 @@ This file is used to list changes made in each version of nrpe
 ## Unreleased
 
 - Remove windows references and use Chef defaults for `file` and `template` resources
+- Update checks for `node['platform_family']` to handle `amazon` 
 
 ## 2.0.5 (2018-12-14)
 
