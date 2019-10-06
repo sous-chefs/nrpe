@@ -101,7 +101,7 @@ when 'debian'
                                          else
                                            'nrpe'
                                          end
-when 'rhel', 'fedora'
+when 'rhel', 'fedora', 'amazon'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
   if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
     default['nrpe']['check_action'] = 'restart'
