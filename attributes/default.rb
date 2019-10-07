@@ -8,7 +8,7 @@
 # Attributes:: default
 #
 # Copyright:: 2009, 37signals
-# Copyright:: 2009-2013, Chef Software, Inc.
+# Copyright:: 2009-2019, Chef Software, Inc.
 # Copyright:: 2012, Webtrends, Inc
 # Copyright:: 2013-2014, Limelight Networks, Inc
 #
@@ -103,7 +103,7 @@ when 'debian'
                                          end
 when 'rhel', 'fedora', 'amazon'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
-  if node['platform_version'].to_i == 7 || node['platform'].to_i == 'fedora'
+  if node['init_package'] == 'systemd'
     default['nrpe']['check_action'] = 'restart'
   end
   default['nrpe']['user']  = 'nrpe'
