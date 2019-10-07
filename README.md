@@ -16,7 +16,7 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 ### Chef
 
-Chef 13+
+Chef 14+
 
 ### Platform
 
@@ -31,7 +31,6 @@ Chef 13+
 
 ### Cookbooks
 
-- build-essential
 - yum-epel
 
 ## Recipes

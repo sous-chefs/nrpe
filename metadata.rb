@@ -6,11 +6,9 @@ description      'Installs and configures Nagios NRPE client'
 version          '2.1.0'
 issues_url       'https://github.com/sous-chefs/nrpe/issues'
 source_url       'https://github.com/sous-chefs/nrpe'
-chef_version     '>= 12.9'
+chef_version     '>= 14'
 
-%w(build-essential yum-epel).each do |cb|
-  depends cb
-end
+depends 'yum-epel'
 
 %w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuseleap).each do |os|
   supports os
