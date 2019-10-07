@@ -12,6 +12,6 @@ chef_version     '>= 12.9'
   depends cb
 end
 
-%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuse opensuseleap).each do |os|
+%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuseleap).each do |os|
   supports os
 end
