@@ -50,8 +50,8 @@ default['nrpe']['plugins']['checksum'] = '76c6b58f0867ab7b6c8c86c7e94fcce7183618
 
 # for nrpe from source installation
 default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
-default['nrpe']['version']  = '2.15'
-default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072'
+default['nrpe']['version']  = '3.2.1'
+default['nrpe']['checksum'] = '8ad2d1846ab9011fdd2942b8fc0c99dfad9a97e57f4a3e6e394a4ead99c0f1f0'
 
 # authorization options
 default['nrpe']['server_role'] = 'monitoring'

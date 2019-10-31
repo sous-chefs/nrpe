@@ -7,6 +7,8 @@ This file is used to list changes made in each version of nrpe
 - Remove windows references and use Chef defaults for `file` and `template` resources
 - Update checks for `node['platform_family']` to handle `amazon`
 - Respect NRPE version attribute
+- Update NRPE version
+- Systemd tmpfiles config updated to create the nrpe directory in the run directories for the configured pid directory
 
 ## 2.0.5 (2018-12-14)
 
