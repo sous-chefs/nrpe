@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'source install on ubuntu 16.04' do
   cached(:chef_run) do
     runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
-    runner.node.normal['nrpe']['install_method'] = 'source'
+    runner.node.override['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end
 
