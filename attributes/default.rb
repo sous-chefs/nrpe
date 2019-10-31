@@ -155,7 +155,7 @@ when 'freebsd'
   default['nrpe']['plugin_dir']        = '/usr/local/libexec/nagios'
 else
   # suse enterprise doesn't have a package, but modern opensuse does
-  if node['platform'] == 'opensuseleap'
+  if platform?('opensuseleap')
     default['nrpe']['install_method']    = 'package'
     default['nrpe']['pid_file']          = '/run/nrpe/nrpe.pid'
     default['nrpe']['home']              = '/usr/lib/nagios'
