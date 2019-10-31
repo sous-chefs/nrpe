@@ -77,3 +77,16 @@ bash 'compile-nagios-nrpe' do
   EOH
   not_if "nrpe --version | grep #{node['nrpe']['version']}"
 end
+
+directory node['nrpe']['pid_dir'] do
+  user node['nrpe']['user']
+  group node['nrpe']['group']
+  mode '0755'
+  only_if { node['init_system'] == 'systemd' }
+end
+
+template '/usr/lib/tmpfiles.d/nrpe.conf' do
+  source 'nrpe-tmpfiles.d.erb'
+  mode '0644'
+  only_if { node['init_system'] == 'systemd' }
+end

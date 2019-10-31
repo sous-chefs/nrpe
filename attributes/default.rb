@@ -50,8 +50,8 @@ default['nrpe']['plugins']['checksum'] = '76c6b58f0867ab7b6c8c86c7e94fcce7183618
 
 # for nrpe from source installation
 default['nrpe']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
-default['nrpe']['version']  = '2.15'
-default['nrpe']['checksum'] = '66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072'
+default['nrpe']['version']  = '3.2.1'
+default['nrpe']['checksum'] = '8ad2d1846ab9011fdd2942b8fc0c99dfad9a97e57f4a3e6e394a4ead99c0f1f0'
 
 # authorization options
 default['nrpe']['server_role'] = 'monitoring'
@@ -71,7 +71,8 @@ default['nrpe']['systemd_unit_dir'] = '/usr/lib/systemd/system'
 case node['platform_family']
 when 'debian'
   default['nrpe']['install_method']    = 'package'
-  default['nrpe']['pid_file']          = '/var/run/nagios/nrpe.pid'
+  default['nrpe']['pid_dir']           = '/var/run/nagios/'
+  default['nrpe']['pid_file']          = node['nrpe']['pid_dir'] + 'nrpe.pid'
   default['nrpe']['home']              = '/usr/lib/nagios'
   default['nrpe']['packages']          = {
     'nagios-nrpe-server' => {
@@ -110,7 +111,8 @@ when 'rhel', 'fedora', 'amazon'
   default['nrpe']['group'] = 'nrpe'
   default['nrpe']['install_method']    = 'package'
   default['nrpe']['install_yum-epel']  = true
-  default['nrpe']['pid_file']          = '/var/run/nrpe/nrpe.pid'
+  default['nrpe']['pid_dir']           = '/var/run/nagios/'
+  default['nrpe']['pid_file']          = node['nrpe']['pid_dir'] + 'nrpe.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
       'version' => nil,
@@ -142,7 +144,8 @@ when 'rhel', 'fedora', 'amazon'
   default['nrpe']['bin_dir']           = '/usr/sbin'
 when 'freebsd'
   default['nrpe']['install_method']    = 'package'
-  default['nrpe']['pid_file']          = '/var/run/nrpe2/nrpe2.pid'
+  default['nrpe']['pid_dir']           = '/var/run/nrpe2/'
+  default['nrpe']['pid_file']          = node['nrpe']['pid_dir'] + 'nrpe2.pid'
   default['nrpe']['packages']          = {
     'nrpe' => {
       'version' => nil,
@@ -157,7 +160,8 @@ else
   # suse enterprise doesn't have a package, but modern opensuse does
   if node['platform'] == 'opensuseleap'
     default['nrpe']['install_method']    = 'package'
-    default['nrpe']['pid_file']          = '/run/nrpe/nrpe.pid'
+    default['nrpe']['pid_dir']           = '/run/nrpe/'
+    default['nrpe']['pid_file']          = node['nrpe']['pid_dir'] + 'nrpe.pid'
     default['nrpe']['home']              = '/usr/lib/nagios'
     default['nrpe']['ssl_lib_dir']       = '/usr/lib'
     default['nrpe']['service_name']      = 'nrpe'
@@ -174,7 +178,8 @@ else
     }
   else
     default['nrpe']['install_method']    = 'source'
-    default['nrpe']['pid_file']          = '/var/run/nrpe.pid'
+    default['nrpe']['pid_dir']           = '/var/run/'
+    default['nrpe']['pid_file']          = node['nrpe']['pid_dir'] + 'nrpe.pid'
     default['nrpe']['home']              = '/usr/lib/nagios'
     default['nrpe']['ssl_lib_dir']       = '/usr/lib'
     default['nrpe']['service_name']      = 'nrpe'
