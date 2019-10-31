@@ -7,8 +7,11 @@ This file is used to list changes made in each version of nrpe
 - Remove windows references and use Chef defaults for `file` and `template` resources
 - Update checks for `node['platform_family']` to handle `amazon`
 - Respect NRPE version attribute
-- Update NRPE version
+- Update NRPE version for source installs to 3.2.1
 - Systemd tmpfiles config updated to create the nrpe directory in the run directories for the configured pid directory
+- Removed the unnecessary long_description metadata in metadata.rb
+- Updated platform checks to use platform? and platform_family? everywhere
+- Removed if respond_to checks in metadata.rb
 
 ## 2.0.5 (2018-12-14)
 

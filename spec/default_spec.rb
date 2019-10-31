@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'default installation' do
   cached(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'debian', version: '9')
+    runner = ChefSpec::SoloRunner.new(platform: 'debian')
     runner.converge 'nrpe::default'
   end
 
@@ -57,19 +57,19 @@ end
 
 describe 'default installation with attributes' do
   let(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'debian', version: '7.11')
+    runner = ChefSpec::SoloRunner.new(platform: 'debian')
     runner.converge 'nrpe::default'
   end
 
   it 'expects nrpe config to have allow_bash_command_substitution when set' do
-    chef_run.node.normal['nrpe']['allow_bash_command_substitution'] = 0
+    chef_run.node.override['nrpe']['allow_bash_command_substitution'] = 0
     chef_run.converge('nrpe::default')
 
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('allow_bash_command_substitution=0')
   end
 
   it 'expects nrpe config to have connection_timeout when set' do
-    chef_run.node.normal['nrpe']['connection_timeout'] = 20
+    chef_run.node.override['nrpe']['connection_timeout'] = 20
     chef_run.converge('nrpe::default')
 
     expect(chef_run).to render_file('/etc/nagios/nrpe.cfg').with_content('connection_timeout=20')
