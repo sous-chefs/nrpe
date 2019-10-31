@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe 'source install on ubuntu 16.04' do
+describe 'source install on ubuntu' do
   cached(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
+    runner = ChefSpec::SoloRunner.new(platform: 'ubuntu')
     runner.node.override['nrpe']['install_method'] = 'source'
     runner.converge 'nrpe::default'
   end

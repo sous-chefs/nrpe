@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'package install' do
   cached(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04')
+    runner = ChefSpec::SoloRunner.new(platform: 'ubuntu')
     runner.converge 'nrpe::default'
   end
 

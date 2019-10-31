@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'default installation' do
   cached(:chef_run) do
-    runner = ChefSpec::SoloRunner.new(platform: 'debian', version: '9')
+    runner = ChefSpec::SoloRunner.new(platform: 'debian')
     runner.converge 'nrpe::default'
   end
 
