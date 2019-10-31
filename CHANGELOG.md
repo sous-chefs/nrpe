@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of nrpe
 
-## Unreleased
+## 2.1.0 (2019-10-31)
 
 - Remove windows references and use Chef defaults for `file` and `template` resources
 - Update checks for `node['platform_family']` to handle `amazon`
@@ -12,6 +12,7 @@ This file is used to list changes made in each version of nrpe
 - Removed the unnecessary long_description metadata in metadata.rb
 - Updated platform checks to use platform? and platform_family? everywhere
 - Removed if respond_to checks in metadata.rb
+- Simplified ChefSpecs to avoid the need to update them for new platform releases
 
 ## 2.0.5 (2018-12-14)
 
