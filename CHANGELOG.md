@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
+- Migrated to actions
+
 ## 2.1.0 (2019-10-31)
 
 - Remove windows references and use Chef defaults for `file` and `template` resources
