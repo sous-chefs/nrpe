@@ -40,7 +40,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'cebtos-7'
+          - 'centos-7'
           - 'debian-9'
           - 'ubuntu-1604'
         suite:
