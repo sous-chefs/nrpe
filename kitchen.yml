@@ -5,15 +5,25 @@ driver:
 provisioner:
   name: chef_zero
   deprecations_as_errors: true
+  chef_license: accept-no-persist
 
 platforms:
-  - name: amazon-linux
+  - name: amazonlinux
     driver_config:
       box: mvbcoding/awslinux
+  - name: amazonlinux-2
   - name: centos-6
   - name: centos-7
+  - name: centos-8
+  - name: debian-8
   - name: debian-9
+  - name: debian-10
+  - name: fedora-29
+  - name: freebsd-12
+  - name: opensuse-leap-15
   - name: ubuntu-16.04
+  - name: ubuntu-18.04
+  - name: ubuntu-19.04
 
 suites:
   - name: package
@@ -26,8 +36,7 @@ suites:
       nrpe:
         install_method: 'source'
     excludes:
-      - freebsd-10.3
-      - freebsd-11.0
+      - freebsd-12
   - name: check
     run_list:
       - recipe[chef_nrpe_test::check]

@@ -16,14 +16,15 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 ### Chef
 
-Chef 13+
+Chef 14+
 
 ### Platform
 
 - Debian
 - FreeBSD
 - Ubuntu
-- Red Hat Enterprise Linux (CentOS/Amazon/Scientific/Oracle)
+- RHEL including CentOS and Oracle Linux
+- Amazon Linux (2.x cannot be installed via package)
 - Fedora
 - SUSE / openSUSE
 
@@ -31,7 +32,6 @@ Chef 13+
 
 ### Cookbooks
 
-- build-essential
 - yum-epel
 
 ## Recipes

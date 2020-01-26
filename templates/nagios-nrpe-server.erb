@@ -12,15 +12,15 @@
 # Provides:          <%= node['nrpe']['service_name'] %>
 # Required-Start:    $local_fs $remote_fs $syslog $named $network $time
 # Required-Stop:     $local_fs $remote_fs $syslog $named $network
-# Should-Start:      
-# Should-Stop:       
+# Should-Start:
+# Should-Stop:
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: nagios remote plugin executor
 # Description:       nagios-nrpe is a daemon for running checks on remote systems.
 ### END INIT INFO
 
-<% if ['rhel', 'fedora'].include?(node['platform_family']) -%>
+<% if ['rhel', 'fedora', 'amazon'].include?(node['platform_family']) -%>
 # Source function library
 if [ -f /etc/rc.d/init.d/functions ]; then
 . /etc/rc.d/init.d/functions
@@ -49,13 +49,13 @@ case "$1" in
 start)
   # Start daemon.
   echo -n "Starting <%= node['nrpe']['service_name'] %>: "
-  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>daemon $NrpeBin -c $NrpeCfg -d<% else -%>start-stop-daemon --start --quiet --exec $NrpeBin -- -c $NrpeCfg -d<% end -%>
+  <% if ['rhel', 'fedora', 'amazon'].include?(node['platform_family']) -%>daemon $NrpeBin -c $NrpeCfg -d<% else -%>start-stop-daemon --start --quiet --exec $NrpeBin -- -c $NrpeCfg -d<% end -%>
   echo
   ;;
 stop)
   # Stop daemon.
   echo -n "Shutting down <%= node['nrpe']['service_name'] %>: "
-  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>killproc <%= node['nrpe']['service_name'] %><% else -%>start-stop-daemon --stop --quiet --exec $NrpeBin<% end -%>
+  <% if ['rhel', 'fedora', 'amazon'].include?(node['platform_family']) -%>killproc <%= node['nrpe']['service_name'] %><% else -%>start-stop-daemon --stop --quiet --exec $NrpeBin<% end -%>
   echo
   ;;
 restart)
@@ -66,10 +66,10 @@ restart)
 reload)
   # reload the daemon.
   echo "Reloading <%= node['nrpe']['service_name'] %> configuration files"
-  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>killproc -p $PidFile $NrpeBin -HUP<% else -%>start-stop-daemon --stop --signal HUP --quiet --pidfile $PidFile<% end -%>
+  <% if ['rhel', 'fedora', 'amazon'].include?(node['platform_family']) -%>killproc -p $PidFile $NrpeBin -HUP<% else -%>start-stop-daemon --stop --signal HUP --quiet --pidfile $PidFile<% end -%>
   ;;
 status)
-  <% if ['rhel', 'fedora'].include?(node['platform_family']) -%>status<% else -%>status_of_proc<% end -%> -p $PidFile <%= node['nrpe']['service_name'] %> && exit 0 || exit $?
+  <% if ['rhel', 'fedora', 'amazon'].include?(node['platform_family']) -%>status<% else -%>status_of_proc<% end -%> -p $PidFile <%= node['nrpe']['service_name'] %> && exit 0 || exit $?
   ;;
 *)
   echo "Usage: <%= node['nrpe']['service_name'] %> {start|stop|restart|status}"

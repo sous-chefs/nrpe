@@ -25,7 +25,7 @@
 build_essential ''
 
 pkgs = value_for_platform_family(
-  %w(rhel fedora) => %w(openssl-devel tar which),
+  %w(rhel fedora amazon) => %w(openssl-devel tar which),
   'debian' => %w(libssl-dev tar),
   'gentoo' => [],
   'default' => %w(libssl-dev tar),
