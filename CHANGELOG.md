@@ -2,9 +2,19 @@
 
 This file is used to list changes made in each version of nrpe
 
-## Unreleased
+## 3.0.0 (2020-01-26)
 
-- Migrated to actions
+- Require Chef Infra Client 14 or later
+- Fix failing openSUSE source installs by adding gzip as a depedency package
+- Better check for systemd platforms
+- Don't rely on the build-essential cookbook now that build_essential resource is built-in
+- Resolve all the latest cookstyle warnings
+- Update .gitignore and chefignore files to newer versions
+- Move the test cookbook into an integration group in the Berksfile
+- Move the template files out of the templates/default directory and just put them in templates/
+- Remove the .foodcritic that was no longer needed as all rules pass
+- Remove the Gemfile that was used to install stove which is part of Chef DK and Workstation now
+- Add the latest platforms the kitchen configs
 
 ## 2.1.0 (2019-10-31)
 
@@ -17,16 +27,6 @@ This file is used to list changes made in each version of nrpe
 - Updated platform checks to use platform? and platform_family? everywhere
 - Removed if respond_to checks in metadata.rb
 - Simplified ChefSpecs to avoid the need to update them for new platform releases
-- Better check for systemd platforms
-- Require Chef Infra Client 14 or later
-- Don't rely on the build-essential cookbook now that build_essential resource is built-in
-- Resolve all the latest cookstyle warnings
-- Update .gitignore and chefignore files to newer versions
-- Move the test cookbook into an integration group in the Berksfile
-- Move the template files out of the templates/default directory and just put them in templates/
-- Remove the .foodcritic that was no longer needed as all rules pass
-- Remove the Gemfile that was used to install stove which is part of Chef DK and Workstation now
-- Add the latest platforms the kitchen configs
 
 ## 2.0.5 (2018-12-14)
 
