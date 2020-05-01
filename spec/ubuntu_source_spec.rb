@@ -9,7 +9,7 @@ describe 'source install on ubuntu' do
 
   before do
     stub_command('which nrpe').and_return(false)
-    stub_command('nrpe --version | grep 3.2.1').and_return(false)
+    stub_command('/usr/sbin/nrpe --version | grep 3.2.1').and_return(false)
   end
 
   it 'templates systemd unit file' do
