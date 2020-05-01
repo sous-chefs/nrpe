@@ -75,7 +75,7 @@ bash 'compile-nagios-nrpe' do
     make all
     make install
   EOH
-  not_if "nrpe --version | grep #{node['nrpe']['version']}"
+  not_if "#{node['nrpe']['bin_dir']}/nrpe --version | grep #{node['nrpe']['version']}"
 end
 
 directory ::File.dirname(node['nrpe']['pid_file']) do
