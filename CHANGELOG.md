@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
+- Add bin_dir to nrpe version check
+
 ## 3.0.0 (2020-01-26)
 
 - Require Chef Infra Client 14 or later
