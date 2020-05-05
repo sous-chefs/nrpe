@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of nrpe
 
-## Unreleased
+## 3.0.1 (2020-05-05)
 
 - Add bin_dir to nrpe version check
 
