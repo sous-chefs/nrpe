@@ -19,6 +19,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+unified_mode true
+
 # Name of the nrpe check, used for the filename and the command name
 property :command_name, String, name_property: true
 property :warning_condition, [Integer, String]

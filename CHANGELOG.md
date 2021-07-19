@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
+- Enable `unified_mode` for Chef 17 compatibility
+- Bump minimum Chef version to 15.3
+
 ## 3.0.1 (2020-05-05)
 
 - Add bin_dir to nrpe version check
@@ -9,7 +14,7 @@ This file is used to list changes made in each version of nrpe
 ## 3.0.0 (2020-01-26)
 
 - Require Chef Infra Client 14 or later
-- Fix failing openSUSE source installs by adding gzip as a depedency package
+- Fix failing openSUSE source installs by adding gzip as a dependency package
 - Better check for systemd platforms
 - Don't rely on the build-essential cookbook now that build_essential resource is built-in
 - Resolve all the latest cookstyle warnings

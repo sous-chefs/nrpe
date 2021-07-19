@@ -6,7 +6,7 @@ description      'Installs and configures Nagios NRPE client'
 version          '3.0.2'
 issues_url       'https://github.com/sous-chefs/nrpe/issues'
 source_url       'https://github.com/sous-chefs/nrpe'
-chef_version     '>= 14'
+chef_version     '>= 15.3'
 
 depends 'yum-epel'
 
