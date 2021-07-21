@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
 ## 4.0.0 - *2021-07-21*
 
 - Enable `unified_mode` for Chef 17 compatibility
