@@ -40,16 +40,17 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'centos-7'
-          - 'debian-9'
-          - 'debian-10'
-          - 'ubuntu-1604'
-          - 'ubuntu-1804'
-          - 'opensuse-leap-15'
+          - centos-7
+          - centos-8
+          - debian-9
+          - debian-10
+          - ubuntu-1804
+          - ubuntu-2004
+          - opensuse-leap-15
         suite:
-          - 'package'
-          - 'source'
-          - 'check'
+          - package
+          - source
+          - check
       fail-fast: false
 
     steps:
