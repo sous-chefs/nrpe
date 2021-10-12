@@ -4,6 +4,11 @@ This file is used to list changes made in each version of nrpe
 
 ## Unreleased
 
+- resolved cookstyle error: attributes/default.rb:106:6 refactor: `Chef/Modernize/UseChefLanguageSystemdHelper`
+- resolved cookstyle error: recipes/_source_nrpe.rb:30:4 refactor: `Chef/Modernize/UseChefLanguageSystemdHelper`
+- resolved cookstyle error: recipes/_source_nrpe.rb:85:13 refactor: `Chef/Modernize/UseChefLanguageSystemdHelper`
+- resolved cookstyle error: recipes/_source_nrpe.rb:94:13 refactor: `Chef/Modernize/UseChefLanguageSystemdHelper`
+- resolved cookstyle error: recipes/configure.rb:78:14 refactor: `Chef/Modernize/UseChefLanguageSystemdHelper`
 ## 4.0.1 - *2021-08-30*
 
 - Standardise files with files in sous-chefs/repo-management

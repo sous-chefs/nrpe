@@ -103,7 +103,7 @@ when 'debian'
                                          end
 when 'rhel', 'fedora', 'amazon'
   # support systemd init script and the new NRPE user on modern RHEL / Fedora
-  if node['init_package'] == 'systemd'
+  if systemd?
     default['nrpe']['check_action'] = 'restart'
   end
   default['nrpe']['user']  = 'nrpe'

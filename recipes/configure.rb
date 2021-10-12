@@ -75,7 +75,7 @@ template "#{node['nrpe']['systemd_unit_dir']}/nrpe.service" do
   notifies :run, 'execute[nrpe-reload-systemd]', :immediately
   notifies :restart, "service[#{node['nrpe']['service_name']}]", :delayed
   only_if  { ::File.exist?("#{node['nrpe']['systemd_unit_dir']}/nrpe.service") }
-  only_if  { node['init_package'] == 'systemd' }
+  only_if  { systemd? }
   variables(
     nrpe: node['nrpe']
   )
