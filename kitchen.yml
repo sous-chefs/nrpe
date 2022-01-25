@@ -3,7 +3,9 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
+  name: chef_infra
+  multiple_converge: 2
+  enforce_idempotency: true
   deprecations_as_errors: true
   chef_license: accept-no-persist
 

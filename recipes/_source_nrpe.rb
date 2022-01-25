@@ -27,7 +27,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/nrpe-#{node['nrpe']['version']}.t
   action :create_if_missing
 end
 
-if node['init_package'] == 'systemd'
+if systemd?
   execute 'nrpe-reload-systemd' do
     command '/bin/systemctl daemon-reload'
     action :nothing
@@ -82,7 +82,7 @@ directory ::File.dirname(node['nrpe']['pid_file']) do
   user node['nrpe']['user']
   group node['nrpe']['group']
   mode '0755'
-  only_if { node['init_package'] == 'systemd' }
+  only_if { systemd? }
 end
 
 template '/usr/lib/tmpfiles.d/nrpe.conf' do
@@ -91,5 +91,5 @@ template '/usr/lib/tmpfiles.d/nrpe.conf' do
   variables(
     pid_dir: ::File.dirname(node['nrpe']['pid_file'])
   )
-  only_if { node['init_package'] == 'systemd' }
+  only_if { systemd? }
 end
