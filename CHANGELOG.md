@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
 ## 4.0.2 - *2022-01-25*
 
 - Cookstyle fixes
