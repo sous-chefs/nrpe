@@ -40,13 +40,15 @@ jobs:
     strategy:
       matrix:
         os:
+          - almalinux-8
           - centos-7
-          - centos-8
-          - debian-9
+          - centos-stream-8
           - debian-10
+          - debian-11
           - ubuntu-1804
           - ubuntu-2004
           - opensuse-leap-15
+          - rockylinux-8
         suite:
           - package
           - source
