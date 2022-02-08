@@ -4,6 +4,8 @@ This file is used to list changes made in each version of nrpe
 
 ## Unreleased
 
+- Remove delivery folder
+
 ## 4.0.3 - *2022-02-01*
 
 - Update tested platforms
