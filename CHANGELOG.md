@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
 ## 4.0.4 - *2022-02-08*
 
 - Remove delivery folder
