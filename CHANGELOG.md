@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of nrpe
 
+## Unreleased
+
 ## 4.0.6 - *2023-02-14*
 
 ## 4.0.5 - *2023-02-14*
