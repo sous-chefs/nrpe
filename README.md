@@ -60,13 +60,13 @@ Configures the NRPE client. This will be called internally by the `default` reci
 
 ### options for package install
 
-- `node['nrpe']['package']['options']` - options when installing nrpe via package manager. The default value for this attribute is nil.`
-- `node['nrpe']['install_yum-epel']` - whether to install the EPEL repo or not. The default value is `true`. Set this to `false` if you do not wish to install the EPEL RPM; in this scenario you will need to make the relevant NRPE packages available via another method e.g. local repo.
+- Package manager `node['nrpe']['package']['options']` - options when installing nrpe via package manager. The default value for this attribute is nil.`
+- EPEL repo `node['nrpe']['install_yum-epel']` - whether to install the EPEL repo or not. The default value is `true`. Set this to `false` if you do not wish to install the EPEL RPM; in this scenario you will need to make the relevant NRPE packages available via another method e.g. local repo.
 
 ### nrpe.conf attributes
 
-- `node['nrpe']['server_port']` - the port nrpe will listen on, default 5666
-- `node['nrpe']['server_address']` - the IP the nrpe server will listen on. This allows you to bind to particular IPs in situations where the system has more than one IP. This is particularly handy in determining if nrpe should bind to the internal or public IP in a cloud environment. Set the attribute to the node attribute for the cloud interface you wish to use. Defaults to nil (not enabled)
+- Server port: `node['nrpe']['server_port']` - the port nrpe will listen on, default 5666
+- Address: `node['nrpe']['server_address']` - the IP the nrpe server will listen on. This allows you to bind to particular IPs in situations where the system has more than one IP. This is particularly handy in determining if nrpe should bind to the internal or public IP in a cloud environment. Set the attribute to the node attribute for the cloud interface you wish to use. Defaults to nil (not enabled)
 - `node['nrpe']['log_facility']` - syslog facility to log to, default nil (not set)
 - `node['nrpe']['command_prefix']` - command to prefix to every nrpe command (like perhaps sudo), default nil (not set)
 - `node['nrpe']['debug']` - debug level nrpe configuration, default 0
@@ -112,7 +112,7 @@ The check resource provides an easy way to add and remove NRPE checks from withi
 - `command_name` The name of the check. This is the command that you will call from your nagios_service data bag check
 - `warning_condition` String that you will pass to the command with the -w flag
 - `critical_condition` String that you will pass to the command with the -c flag
-- `command` The actual command to execute (including the path). If this is not specified, this will use `#{node['nrpe']['plugin_dir']}/command_name` as the path to the command.
+- `command` The actual command to execute (including the path). If this is not specified, this will use `#{node['nrpe' ['plugin_dir']}/command_name` as the path to the command.
 - `parameters` Any additional parameters you wish to pass to the plugin.
 - `template` Use the specific erb template to render NRPE config command.
 
