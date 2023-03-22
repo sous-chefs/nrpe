@@ -4,11 +4,22 @@ This file is used to list changes made in each version of nrpe
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+- Update overcommit
+- Update yamllint
+- Update Renovate config
+
 ## 4.0.7 - *2023-02-14*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.6 - *2023-02-14*
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 4.0.5 - *2023-02-14*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.4 - *2022-02-08*
 
