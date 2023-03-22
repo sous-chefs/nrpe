@@ -97,7 +97,7 @@ This file is used to list changes made in each version of nrpe
 - Convert the check LWRP to a custom resource with simplified restart logic. This increases the requirement of Chef to 12.9 or later
 - Add support for package installs on openSUSE Leap
 - Update RHEL platforms to use the nrpe user and pid file defined in the package
-- Remove logic which built node['nrpe']['checks'] as it broke on modern Chef clients
+- Remove logic which built `node['nrpe']['checks']` as it broke on modern Chef clients
 - Added Chefspec matchers for the check resource
 - Use multi-package installs to speed up package installs
 - Simplify the Fedora check in the attributes file
@@ -111,8 +111,8 @@ This file is used to list changes made in each version of nrpe
 ## 1.6.3 (2016-08-12)
 
 - Updated cookbook to support nrpe 3.0 using source install method
-- Added ability to define node['nrpe']['bin_dir'], default to /usr/sbin
-- Removed duplicate line from README.md for node['nrpe']['conf_dir'] attribute
+- Added ability to define `node['nrpe']['bin_dir']` default to /usr/sbin
+- Removed duplicate line from README.md for `node['nrpe']['conf_dir']` attribute
 
 ## 1.6.2 (2016-08-12)
 
@@ -159,17 +159,17 @@ This file is used to list changes made in each version of nrpe
 ## 1.5.0
 
 - Added 3 retries with a delay of 3 to the nrpe service start for RHEL/CentOS 7
-- Added ability to define node['nrpe']['packages'] as a Hash to add version information as sample below. In your environment specific cookbook, this version infomation for each individual package can be overriden for required versions (instead of latest one). If it is nil it will install latest one from repositories.
+- Added ability to define `node['nrpe']['packages']` as a Hash to add version information as sample below. In your environment specific cookbook, this version infomation for each individual package can be overriden for required versions (instead of latest one). If it is nil it will install latest one from repositories.
 
-  Sample: default['nrpe']['packages'] = { 'nagios-nrpe-server' => {'version' => nil}, 'nagios-plugins' => {'version' => nil}, 'nagios-plugins-basic' => {'version' => nil}, 'nagios-plugins-standard' => {'version' => nil} }
+  Sample: `default['nrpe']['packages']` = { 'nagios-nrpe-server' => {'version' => nil}, 'nagios-plugins' => {'version' => nil}, 'nagios-plugins-basic' => {'version' => nil}, 'nagios-plugins-standard' => {'version' => nil} }
 
   For backward compatibiility, it will also install packages if it is defined as an array in your env specific cookbook.
 
 ## 1.4.12
 
-- Added default['nrpe']['checks'] to store all checks as a node attribute
+- Added `default['nrpe']['checks']` to store all checks as a node attribute
 - Removed Ruby 1.9.3 and added Ruby 2.2.0 to Travis
-- Make the yum-epel recipe optional with default['nrpe']['install_yum-epel']
+- Make the yum-epel recipe optional with `default['nrpe']['install_yum-epel']`
 
 ## 1.4.10
 
@@ -207,7 +207,7 @@ This file is used to list changes made in each version of nrpe
 ## 1.3.0
 
 - Source lsb init-functions in the init script on Ubuntu source installs so the service doesn't start every run
-- Added new attribute node['nrpe']['allow_bash_command_substitution'] to allow using the allow_bash_command_substitution config option
+- Added new attribute `node['nrpe']['allow_bash_command_substitution']` to allow using the allow_bash_command_substitution config option
 - When searching the the monitoring role search for roles vs. role so the monitoring role can be nested on the run_list
 - Sort and Unique the array of allowed monitor hosts. This prevents NRPE from restarting on every run when the results come back in a different order
 - Fix deprecated warning when running specs
@@ -215,7 +215,7 @@ This file is used to list changes made in each version of nrpe
 ## 1.2.0
 
 - Add status / reload commands to the init script for source installs resolving issues with the service on source installs
-- Add new node['nrpe']['package']['options'] attribute for adding install options to the package install
+- Add new `node['nrpe']['package']['options']` attribute for adding install options to the package install
 - Add Ubuntu 14.04 to the Test Kitchen config and remove Ubuntu 13.04
 - Add source install suite to Test Kitchen
 
