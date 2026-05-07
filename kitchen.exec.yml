@@ -1,7 +1,6 @@
 ---
-driver: { name: exec }
-transport: { name: exec }
+driver:
+  name: exec
 
-platforms:
-  - name: macos-latest
-  - name: windows-latest
+transport:
+  name: exec

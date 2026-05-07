@@ -1,0 +1,7 @@
+---
+name: default
+title: Default NRPE Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Default NRPE resource tests
+version: 1.0.0

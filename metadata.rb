@@ -1,15 +1,21 @@
+# frozen_string_literal: true
+
 name             'nrpe'
 maintainer       'Sous Chefs'
 maintainer_email 'help@sous-chefs.org'
 license          'Apache-2.0'
-description      'Installs and configures Nagios NRPE client'
+description      'Provides custom resources to install and configure Nagios NRPE'
 version          '4.0.19'
 issues_url       'https://github.com/sous-chefs/nrpe/issues'
 source_url       'https://github.com/sous-chefs/nrpe'
 chef_version     '>= 15.3'
 
-depends 'yum-epel'
-
-%w(debian ubuntu redhat centos fedora scientific amazon oracle freebsd suse opensuseleap).each do |os|
-  supports os
-end
+supports 'almalinux', '>= 8.0'
+supports 'amazon', '>= 2023.0'
+supports 'centos_stream', '>= 9.0'
+supports 'debian', '>= 12.0'
+supports 'fedora'
+supports 'oracle', '>= 8.0'
+supports 'redhat', '>= 8.0'
+supports 'rocky', '>= 8.0'
+supports 'ubuntu', '>= 22.04'

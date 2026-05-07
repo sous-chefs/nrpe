@@ -11,11 +11,9 @@ jobs:
   lint-unit:
     uses: sous-chefs/.github/.github/workflows/lint-unit.yml@6.0.0
     permissions:
-      actions: write
       checks: write
       pull-requests: write
       statuses: write
-      issues: write
 
   integration:
     needs: "lint-unit"
@@ -25,25 +23,35 @@ jobs:
       matrix:
         os:
           - almalinux-8
-          - centos-7
-          - centos-stream-8
-          - debian-10
-          - debian-11
-          - ubuntu-1804
-          - ubuntu-2004
-          - opensuse-leap-15
+          - almalinux-9
+          - amazonlinux-2023
+          - centos-stream-9
+          - debian-12
+          - fedora-latest
+          - oraclelinux-8
+          - oraclelinux-9
           - rockylinux-8
+          - rockylinux-9
+          - ubuntu-2204
+          - ubuntu-2404
         suite:
-          - package
+          - default
           - source
           - check
+        exclude:
+          - os: amazonlinux-2023
+            suite: default
+          - os: amazonlinux-2023
+            suite: check
+          - os: fedora-latest
+            suite: source
       fail-fast: false
 
     steps:
       - name: Check out code
         uses: actions/checkout@v6
       - name: Install Chef
-        uses: actionshub/chef-install@6.0.0
+        uses: sous-chefs/.github/.github/actions/install-workstation@6.0.0
       - name: Dokken
         uses: actionshub/test-kitchen@3.0.0
         env:
