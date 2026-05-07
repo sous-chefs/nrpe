@@ -2,6 +2,22 @@
 
 This file is used to list changes made in each version of nrpe
 
+## [5.0.0](https://github.com/sous-chefs/nrpe/compare/v4.0.19...v5.0.0) (2026-05-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate nrpe to custom resources ([#173](https://github.com/sous-chefs/nrpe/issues/173))
+
+### Features
+
+* migrate nrpe to custom resources ([#173](https://github.com/sous-chefs/nrpe/issues/173)) ([20914b7](https://github.com/sous-chefs/nrpe/commit/20914b79f196e9187c8ba6596f9da41b8724c9c7))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#167](https://github.com/sous-chefs/nrpe/issues/167)) ([f4964b3](https://github.com/sous-chefs/nrpe/commit/f4964b3456a5851b2cca13b2b81074ab708b45c4))
+
 ## [4.0.19](https://github.com/sous-chefs/nrpe/compare/4.0.18...v4.0.19) (2025-10-15)
 
 
