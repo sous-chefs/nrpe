@@ -11,30 +11,44 @@ provisioner:
 
 platforms:
   - name: almalinux-8
-  - name: amazonlinux-2
-  - name: centos-7
-  - name: centos-stream-8
-  - name: debian-10
-  - name: debian-11
+  - name: almalinux-9
+  - name: amazonlinux-2023
+  - name: centos-stream-9
+  - name: debian-12
   - name: fedora-latest
-  - name: freebsd-12
-  - name: opensuse-leap-15
+  - name: oraclelinux-8
+  - name: oraclelinux-9
   - name: rockylinux-8
-  - name: ubuntu-18.04
-  - name: ubuntu-20.04
+  - name: rockylinux-9
+  - name: ubuntu-22.04
+  - name: ubuntu-24.04
+
+x-run_lists:
+  default: &default_run_list
+    - recipe[test::default]
+  check: &check_run_list
+    - recipe[test::check]
+  source: &source_run_list
+    - recipe[test::source]
+
+x-verifiers:
+  default: &default_verifier
+    inspec_tests:
+      - path: test/integration/default
+  check: &check_verifier
+    inspec_tests:
+      - path: test/integration/check
+  source: &source_verifier
+    inspec_tests:
+      - path: test/integration/source
 
 suites:
-  - name: package
-    run_list:
-      - recipe[chef_nrpe_test::default]
+  - name: default
+    run_list: *default_run_list
+    verifier: *default_verifier
   - name: source
-    run_list:
-      - recipe[chef_nrpe_test::default]
-    attributes:
-      nrpe:
-        install_method: 'source'
-    excludes:
-      - freebsd-12
+    run_list: *source_run_list
+    verifier: *source_verifier
   - name: check
-    run_list:
-      - recipe[chef_nrpe_test::check]
+    run_list: *check_run_list
+    verifier: *check_verifier

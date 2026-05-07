@@ -1,0 +1,7 @@
+---
+name: source
+title: NRPE Source Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: NRPE source install tests
+version: 1.0.0
