@@ -23,20 +23,20 @@ Chef 15.3+
 
 ### Platform
 
-- Debian
-- FreeBSD
-- Ubuntu
-- RHEL including CentOS and Oracle Linux
-- Amazon Linux (2.x cannot be installed via package)
-- Fedora
-- SUSE / openSUSE
+* Debian
+* FreeBSD
+* Ubuntu
+* RHEL including CentOS and Oracle Linux
+* Amazon Linux (2.x cannot be installed via package)
+* Fedora
+* SUSE / openSUSE
 
 **Notes**: This cookbook has been tested on the listed platforms. It may work on other platforms with or without modification.
 
 ## Resources
 
-- [nrpe](documentation/nrpe_nrpe.md)
-- [nrpe_check](documentation/nrpe_check.md)
+* [nrpe](documentation/nrpe_nrpe.md)
+* [nrpe_check](documentation/nrpe_check.md)
 
 ### nrpe
 
@@ -55,17 +55,17 @@ The check resource provides an easy way to add and remove NRPE checks from withi
 
 #### Actions
 
-- `:add` creates a NRPE configuration file and reloads the NRPE process. Default action.
-- `:remove` removes the configuration file and reloads the NRPE process
+* `:add` creates a NRPE configuration file and reloads the NRPE process. Default action.
+* `:remove` removes the configuration file and reloads the NRPE process
 
 #### Properties
 
-- `command_name` The name of the check. This is the command that you will call from your nagios_service data bag check
-- `warning_condition` String that you will pass to the command with the -w flag
-- `critical_condition` String that you will pass to the command with the -c flag
-- `command` The actual command to execute (including the path). If this is not specified, this will use `plugin_dir/command_name` as the path to the command.
-- `parameters` Any additional parameters you wish to pass to the plugin.
-- `template` Use the specific erb template to render NRPE config command.
+* `command_name` The name of the check. This is the command that you will call from your nagios_service data bag check
+* `warning_condition` String that you will pass to the command with the -w flag
+* `critical_condition` String that you will pass to the command with the -c flag
+* `command` The actual command to execute (including the path). If this is not specified, this will use `plugin_dir/command_name` as the path to the command.
+* `parameters` Any additional parameters you wish to pass to the plugin.
+* `template` Use the specific erb template to render NRPE config command.
 
 #### Examples
 
