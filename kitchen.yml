@@ -3,11 +3,14 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_infra
+  name: policyfile_zero
   multiple_converge: 2
   enforce_idempotency: true
   deprecations_as_errors: true
   chef_license: accept-no-persist
+
+verifier:
+  name: inspec
 
 platforms:
   - name: almalinux-8
